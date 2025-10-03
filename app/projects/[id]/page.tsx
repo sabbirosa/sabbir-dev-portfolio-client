@@ -1,7 +1,7 @@
+import { projectAPI } from "@/lib/api";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { projectAPI } from "@/lib/api";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -48,7 +48,10 @@ export default async function ProjectDetailsPage({
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <Link href="/projects" className="text-[#7C3AED] hover:underline mb-4 inline-block">
+          <Link
+            href="/projects"
+            className="text-[#7C3AED] hover:underline mb-4 inline-block"
+          >
             ← Back to Projects
           </Link>
           <h1 className="text-5xl font-bold mb-4">{project.title}</h1>
@@ -75,7 +78,10 @@ export default async function ProjectDetailsPage({
             className="px-6 py-3 border border-[#7C3AED] text-[#7C3AED] rounded-full hover:bg-[#7C3AED] hover:text-white transition duration-300"
           >
             Live Project
-            <FontAwesomeIcon icon={faArrowRight} className="ml-2 w-4 h-4 -rotate-45" />
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              className="ml-2 w-4 h-4 -rotate-45"
+            />
           </a>
           {project.codeLink && (
             <a
@@ -122,9 +128,11 @@ export default async function ProjectDetailsPage({
           <div className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Future Improvements</h2>
             <ul className="list-disc list-inside space-y-2 text-gray-300">
-              {project.improvements.map((improvement: string, index: number) => (
-                <li key={index}>{improvement}</li>
-              ))}
+              {project.improvements.map(
+                (improvement: string, index: number) => (
+                  <li key={index}>{improvement}</li>
+                )
+              )}
             </ul>
           </div>
         )}
@@ -137,4 +145,3 @@ export default async function ProjectDetailsPage({
     </div>
   );
 }
-

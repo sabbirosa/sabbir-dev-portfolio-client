@@ -10,8 +10,8 @@ export default function ContactPage() {
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h1>
           <p className="text-xl opacity-80 max-w-2xl mx-auto">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part
-            of your visions.
+            I'm always open to discussing new projects, creative ideas, or
+            opportunities to be part of your visions.
           </p>
         </div>
 
@@ -31,7 +31,9 @@ export default function ContactPage() {
                 />
                 <div>
                   <p className="font-medium">Email</p>
-                  <p className="text-gray-400 text-sm">sabbir.sa.dev@gmail.com</p>
+                  <p className="text-gray-400 text-sm">
+                    sabbir.sa.dev@gmail.com
+                  </p>
                 </div>
               </a>
 
@@ -47,7 +49,9 @@ export default function ContactPage() {
                 />
                 <div>
                   <p className="font-medium">LinkedIn</p>
-                  <p className="text-gray-400 text-sm">Sabbir Bin Abdul Latif</p>
+                  <p className="text-gray-400 text-sm">
+                    Sabbir Bin Abdul Latif
+                  </p>
                 </div>
               </a>
 
@@ -74,12 +78,12 @@ export default function ContactPage() {
             <h2 className="text-2xl font-semibold mb-4">Send a Message</h2>
             <div className="p-6 rounded-lg border border-gray-700 bg-gray-800/50">
               <p className="text-gray-300 mb-4">
-                Feel free to reach out to me through any of the contact methods listed. I usually
-                respond within 24-48 hours.
+                Feel free to reach out to me through any of the contact methods
+                listed. I usually respond within 24-48 hours.
               </p>
               <p className="text-gray-400 text-sm">
-                Whether you have a question, want to collaborate on a project, or just want to say
-                hi, I'd love to hear from you!
+                Whether you have a question, want to collaborate on a project,
+                or just want to say hi, I'd love to hear from you!
               </p>
             </div>
 
@@ -98,4 +102,3 @@ export default function ContactPage() {
     </div>
   );
 }
-

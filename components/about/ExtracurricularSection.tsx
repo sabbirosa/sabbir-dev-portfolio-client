@@ -4,7 +4,9 @@ export default function ExtracurricularSection() {
   return (
     <section className="py-16 px-4 md:px-12">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl font-semibold mb-10">Extracurricular & Leadership</h2>
+        <h2 className="text-4xl font-semibold mb-10">
+          Extracurricular & Leadership
+        </h2>
         <div className="space-y-8">
           {extracurricular.map((activity, index) => (
             <div key={index} className="border-l-4 border-[#7C3AED] pl-6">
@@ -19,4 +21,3 @@ export default function ExtracurricularSection() {
     </section>
   );
 }
-

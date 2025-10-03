@@ -26,9 +26,12 @@ export default async function BlogsPage() {
     <div className="py-20 px-4">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">All Blog Posts</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            All Blog Posts
+          </h1>
           <p className="text-xl opacity-80 max-w-3xl mx-auto">
-            Explore my thoughts on web development, React, and modern web technologies.
+            Explore my thoughts on web development, React, and modern web
+            technologies.
           </p>
         </div>
 
@@ -57,7 +60,9 @@ export default async function BlogsPage() {
                 </h3>
 
                 {/* Description */}
-                <p className="opacity-80 mb-4 line-clamp-3">{blog.description}</p>
+                <p className="opacity-80 mb-4 line-clamp-3">
+                  {blog.description}
+                </p>
 
                 {/* Meta */}
                 <div className="flex items-center justify-between text-sm opacity-70 mb-4">
@@ -91,10 +96,11 @@ export default async function BlogsPage() {
         </div>
 
         {blogs.length === 0 && (
-          <p className="text-center text-gray-400 py-10">No blog posts found.</p>
+          <p className="text-center text-gray-400 py-10">
+            No blog posts found.
+          </p>
         )}
       </div>
     </div>
   );
 }
-

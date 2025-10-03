@@ -31,9 +31,12 @@ export default function BlogPreview({ blogs, limit = 3 }: BlogPreviewProps) {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Latest Insights</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Latest Insights
+          </h2>
           <p className="text-xl opacity-80 max-w-3xl mx-auto">
-            Explore my latest thoughts on web development, React, and modern web technologies.
+            Explore my latest thoughts on web development, React, and modern web
+            technologies.
           </p>
         </div>
 
@@ -63,7 +66,9 @@ export default function BlogPreview({ blogs, limit = 3 }: BlogPreviewProps) {
                 </h3>
 
                 {/* Description */}
-                <p className="opacity-80 mb-4 line-clamp-3">{blog.description}</p>
+                <p className="opacity-80 mb-4 line-clamp-3">
+                  {blog.description}
+                </p>
 
                 {/* Meta */}
                 <div className="flex items-center justify-between text-sm opacity-70 mb-4">
@@ -103,7 +108,12 @@ export default function BlogPreview({ blogs, limit = 3 }: BlogPreviewProps) {
             className="blog-button inline-flex items-center px-8 py-3 font-semibold rounded-lg transition-colors duration-200 transform hover:scale-105"
           >
             View All Posts
-            <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="ml-2 h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -117,4 +127,3 @@ export default function BlogPreview({ blogs, limit = 3 }: BlogPreviewProps) {
     </section>
   );
 }
-

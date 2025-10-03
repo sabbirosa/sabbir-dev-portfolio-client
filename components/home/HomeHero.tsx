@@ -12,13 +12,17 @@ export default function HomeHero() {
       <div className="relative flex flex-col lg:flex-row items-center justify-between w-full gap-8">
         {/* Text Section */}
         <div className="intro w-full lg:w-1/2 space-y-4 py-6">
-          <p className="text-lg sm:text-xl">Hi, I&apos;m Sabbir Bin Abdul Latif</p>
+          <p className="text-lg sm:text-xl">
+            Hi, I&apos;m Sabbir Bin Abdul Latif
+          </p>
           <h1 className="text-5xl sm:text-6xl font-semibold leading-tight">
-            Aspiring <br /> <span className="text-[#7C3AED]">Software Engineer</span>
+            Aspiring <br />{" "}
+            <span className="text-[#7C3AED]">Software Engineer</span>
           </h1>
 
           <p className="text-lg sm:text-xl max-w-2xl text-gray-300">
-            I connect real-world problems to scalable, accessible software, building with{" "}
+            I connect real-world problems to scalable, accessible software,
+            building with{" "}
             <ShinyText
               text="React/Next.js • TypeScript • Node/Express"
               disabled={false}
@@ -37,7 +41,10 @@ export default function HomeHero() {
               className="text-sm px-4 py-2 border border-[#7C3AED] text-[#7C3AED] rounded-full hover:bg-[#7C3AED] hover:text-white transition duration-300"
             >
               Download Resume
-              <FontAwesomeIcon icon={faArrowDown} className="ml-2 w-3 h-3 -rotate-45" />
+              <FontAwesomeIcon
+                icon={faArrowDown}
+                className="ml-2 w-3 h-3 -rotate-45"
+              />
             </a>
           </div>
 
@@ -51,7 +58,10 @@ export default function HomeHero() {
               aria-label="GitHub"
             >
               GitHub
-              <FontAwesomeIcon icon={faArrowRight} className="mx-2 w-4 h-4 -rotate-45" />
+              <FontAwesomeIcon
+                icon={faArrowRight}
+                className="mx-2 w-4 h-4 -rotate-45"
+              />
               <span className="block h-[2px] bg-[#7C3AED] w-0 transition-all duration-300 group-hover:w-full"></span>
             </a>
 
@@ -63,7 +73,10 @@ export default function HomeHero() {
               aria-label="LinkedIn"
             >
               LinkedIn
-              <FontAwesomeIcon icon={faArrowRight} className="mx-2 w-4 h-4 -rotate-45" />
+              <FontAwesomeIcon
+                icon={faArrowRight}
+                className="mx-2 w-4 h-4 -rotate-45"
+              />
               <span className="block h-[2px] bg-[#7C3AED] w-0 transition-all duration-300 group-hover:w-full"></span>
             </a>
 
@@ -73,7 +86,10 @@ export default function HomeHero() {
               aria-label="Email"
             >
               Email
-              <FontAwesomeIcon icon={faArrowRight} className="mx-2 w-4 h-4 -rotate-45" />
+              <FontAwesomeIcon
+                icon={faArrowRight}
+                className="mx-2 w-4 h-4 -rotate-45"
+              />
               <span className="block h-[2px] bg-[#7C3AED] w-0 transition-all duration-300 group-hover:w-full"></span>
             </a>
           </div>
@@ -96,4 +112,3 @@ export default function HomeHero() {
     </section>
   );
 }
-

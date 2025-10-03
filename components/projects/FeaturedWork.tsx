@@ -26,13 +26,17 @@ export default function FeaturedWork({ projects }: FeaturedWorkProps) {
         <h2 className="text-5xl font-semibold mb-5">FEATURED WORK</h2>
         <div className="flex flex-wrap justify-between">
           <p className="text-gray-400 max-w-xl mb-10">
-            As an aspiring software engineer, I build scalable, accessible, and user-focused
-            digital solutions—from full-stack platforms to open-source libraries.
+            As an aspiring software engineer, I build scalable, accessible, and
+            user-focused digital solutions—from full-stack platforms to
+            open-source libraries.
           </p>
           <Link href="/contact">
             <button className="contact-btn border p-3 border-black rounded-3xl cursor-pointer hover:bg-black hover:text-white transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 mb-10">
               Let's Discuss{" "}
-              <FontAwesomeIcon icon={faArrowRight} className="mx-2 w-4 h-4 -rotate-45" />
+              <FontAwesomeIcon
+                icon={faArrowRight}
+                className="mx-2 w-4 h-4 -rotate-45"
+              />
             </button>
           </Link>
         </div>
@@ -45,7 +49,8 @@ export default function FeaturedWork({ projects }: FeaturedWorkProps) {
             {/* Text */}
             <div className="flex-1 text-left">
               <h3 className="text-2xl font-medium mb-2">
-                {project.title} <span className="text-gray-500">(0{index + 1})</span>
+                {project.title}{" "}
+                <span className="text-gray-500">(0{index + 1})</span>
               </h3>
               <p className="text-gray-400">{project.description}</p>
               <div className="mt-3 flex gap-3 flex-wrap">
@@ -56,7 +61,10 @@ export default function FeaturedWork({ projects }: FeaturedWorkProps) {
                   className="text-sm px-4 py-2 border border-[#7C3AED] text-[#7C3AED] rounded-full hover:bg-[#7C3AED] hover:text-white transition duration-300"
                 >
                   Live Project
-                  <FontAwesomeIcon icon={faArrowRight} className="ml-2 w-3 h-3 -rotate-45" />
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    className="ml-2 w-3 h-3 -rotate-45"
+                  />
                 </a>
                 {project.codeLink && (
                   <a
@@ -74,7 +82,10 @@ export default function FeaturedWork({ projects }: FeaturedWorkProps) {
                   className="text-sm px-4 py-2 border border-gray-600 text-gray-200 rounded-full hover:border-[#7C3AED] hover:text-white hover:bg-[#7C3AED] transition duration-300"
                 >
                   View Details
-                  <FontAwesomeIcon icon={faArrowRight} className="ml-2 w-3 h-3 -rotate-45" />
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    className="ml-2 w-3 h-3 -rotate-45"
+                  />
                 </Link>
               </div>
             </div>
@@ -93,7 +104,11 @@ export default function FeaturedWork({ projects }: FeaturedWorkProps) {
         ))}
 
         <div className="flex justify-center">
-          <a href="https://github.com/sabbirosa" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/sabbirosa"
+            target="_blank"
+            rel="noreferrer"
+          >
             <button
               type="button"
               className="btn bg-[#222] text-gray-400 hover:text-white rounded-full px-5 py-3 text-sm 
@@ -108,4 +123,3 @@ export default function FeaturedWork({ projects }: FeaturedWorkProps) {
     </section>
   );
 }
-

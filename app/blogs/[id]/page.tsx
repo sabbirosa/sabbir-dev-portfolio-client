@@ -14,7 +14,11 @@ export async function generateStaticParams() {
   }
 }
 
-export default async function BlogPostPage({ params }: { params: { id: string } }) {
+export default async function BlogPostPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   let blog: any = null;
 
   try {
@@ -48,7 +52,10 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
     <div className="py-16 px-4">
       <article className="max-w-4xl mx-auto">
         {/* Back Link */}
-        <Link href="/blogs" className="text-[#7C3AED] hover:underline mb-6 inline-block">
+        <Link
+          href="/blogs"
+          className="text-[#7C3AED] hover:underline mb-6 inline-block"
+        >
           ← Back to Blogs
         </Link>
 
@@ -75,7 +82,9 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
         </header>
 
         {/* Description */}
-        <div className="text-xl text-gray-300 mb-8 leading-relaxed">{blog.description}</div>
+        <div className="text-xl text-gray-300 mb-8 leading-relaxed">
+          {blog.description}
+        </div>
 
         {/* Content */}
         <div
@@ -96,4 +105,3 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
     </div>
   );
 }
-

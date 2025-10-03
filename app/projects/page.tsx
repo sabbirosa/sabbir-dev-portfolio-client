@@ -1,7 +1,7 @@
+import { projectAPI } from "@/lib/api";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { projectAPI } from "@/lib/api";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,8 +22,8 @@ export default async function ProjectsPage() {
       <div className="max-w-6xl mx-auto">
         <h1 className="text-5xl font-semibold mb-5">ALL PROJECTS</h1>
         <p className="text-gray-400 max-w-xl mb-10">
-          Explore all my projects showcasing full-stack development, UI/UX design, and
-          problem-solving skills.
+          Explore all my projects showcasing full-stack development, UI/UX
+          design, and problem-solving skills.
         </p>
 
         <div className="space-y-12">
@@ -35,19 +35,22 @@ export default async function ProjectsPage() {
               {/* Text */}
               <div className="flex-1 text-left">
                 <h3 className="text-2xl font-medium mb-2">
-                  {project.title} <span className="text-gray-500">(0{index + 1})</span>
+                  {project.title}{" "}
+                  <span className="text-gray-500">(0{index + 1})</span>
                 </h3>
                 <p className="text-gray-400 mb-3">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.techStack.slice(0, 5).map((tech: string, i: number) => (
-                    <span
-                      key={i}
-                      className="text-xs px-3 py-1 bg-[#7C3AED]/20 text-[#7C3AED] rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                  {project.techStack
+                    .slice(0, 5)
+                    .map((tech: string, i: number) => (
+                      <span
+                        key={i}
+                        className="text-xs px-3 py-1 bg-[#7C3AED]/20 text-[#7C3AED] rounded-full"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                 </div>
 
                 <div className="mt-3 flex gap-3 flex-wrap">
@@ -58,7 +61,10 @@ export default async function ProjectsPage() {
                     className="text-sm px-4 py-2 border border-[#7C3AED] text-[#7C3AED] rounded-full hover:bg-[#7C3AED] hover:text-white transition duration-300"
                   >
                     Live Project
-                    <FontAwesomeIcon icon={faArrowRight} className="ml-2 w-3 h-3 -rotate-45" />
+                    <FontAwesomeIcon
+                      icon={faArrowRight}
+                      className="ml-2 w-3 h-3 -rotate-45"
+                    />
                   </a>
                   {project.codeLink && (
                     <a
@@ -68,7 +74,10 @@ export default async function ProjectsPage() {
                       className="text-sm px-4 py-2 border border-gray-400 text-gray-300 rounded-full hover:border-[#7C3AED] hover:text-white hover:bg-[#7C3AED] transition duration-300"
                     >
                       Source Code
-                      <FontAwesomeIcon icon={faGithub} className="ml-2 w-4 h-4" />
+                      <FontAwesomeIcon
+                        icon={faGithub}
+                        className="ml-2 w-4 h-4"
+                      />
                     </a>
                   )}
                   <Link
@@ -76,7 +85,10 @@ export default async function ProjectsPage() {
                     className="text-sm px-4 py-2 border border-gray-600 text-gray-200 rounded-full hover:border-[#7C3AED] hover:text-white hover:bg-[#7C3AED] transition duration-300"
                   >
                     View Details
-                    <FontAwesomeIcon icon={faArrowRight} className="ml-2 w-3 h-3 -rotate-45" />
+                    <FontAwesomeIcon
+                      icon={faArrowRight}
+                      className="ml-2 w-3 h-3 -rotate-45"
+                    />
                   </Link>
                 </div>
               </div>
@@ -102,4 +114,3 @@ export default async function ProjectsPage() {
     </div>
   );
 }
-
