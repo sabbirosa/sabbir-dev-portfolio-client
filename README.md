@@ -152,11 +152,13 @@ NEXT_PUBLIC_API_URL=http://localhost:3001/api
 The frontend communicates with the backend API through utility functions in `lib/api.ts`:
 
 ### Auth API
+
 - `authAPI.login(email, password)`
 - `authAPI.verify(token)`
 - `authAPI.getProfile(token)`
 
 ### Blog API
+
 - `blogAPI.getAll(published?)`
 - `blogAPI.getById(id)`
 - `blogAPI.create(token, blogData)` (protected)
@@ -164,6 +166,7 @@ The frontend communicates with the backend API through utility functions in `lib
 - `blogAPI.delete(token, id)` (protected)
 
 ### Project API
+
 - `projectAPI.getAll(featured?)`
 - `projectAPI.getById(id)`
 - `projectAPI.create(token, projectData)` (protected)

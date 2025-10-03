@@ -5,4 +5,3 @@ export const socials = {
   facebook: "https://www.facebook.com/sabbirbinabdullatif",
   twitter: "https://twitter.com/sabbirosa",
 };
-

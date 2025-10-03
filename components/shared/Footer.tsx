@@ -35,7 +35,10 @@ export default function Footer() {
       <ul className="mt-6 flex flex-wrap items-center justify-center gap-6 text-sm">
         {menuItems.map((item) => (
           <li key={item.path}>
-            <Link href={item.path} className="transition-colors hover:text-[#7C3AED]">
+            <Link
+              href={item.path}
+              className="transition-colors hover:text-[#7C3AED]"
+            >
               {item.name}
             </Link>
           </li>
@@ -46,18 +49,31 @@ export default function Footer() {
       <div className="flex flex-col sm:flex-row justify-between items-center gap-5 mt-8 w-full px-4 max-sm:pb-20">
         {/* Copyright Text */}
         <p className="max-sm:text-gray-500 text-sm text-center">
-          © {new Date().getFullYear()} Sabbir Bin Abdul Latif. All rights reserved.
+          © {new Date().getFullYear()} Sabbir Bin Abdul Latif. All rights
+          reserved.
         </p>
 
         {/* Social Media Icons */}
         <div className="social-links flex gap-5">
-          <a href={socials.linkedin} className="text-gray-700 hover:text-black transition text-2xl" aria-label="LinkedIn">
+          <a
+            href={socials.linkedin}
+            className="text-gray-700 hover:text-black transition text-2xl"
+            aria-label="LinkedIn"
+          >
             <FontAwesomeIcon icon={faLinkedin} className="text-xl" />
           </a>
-          <a href={socials.github} className="text-gray-700 hover:text-black transition text-2xl" aria-label="GitHub">
+          <a
+            href={socials.github}
+            className="text-gray-700 hover:text-black transition text-2xl"
+            aria-label="GitHub"
+          >
             <FontAwesomeIcon icon={faGithub} className="text-xl" />
           </a>
-          <a href={socials.email} className="text-gray-700 hover:text-black transition text-2xl" aria-label="Email">
+          <a
+            href={socials.email}
+            className="text-gray-700 hover:text-black transition text-2xl"
+            aria-label="Email"
+          >
             <FontAwesomeIcon icon={faEnvelope} className="text-xl" />
           </a>
         </div>
@@ -65,4 +81,3 @@ export default function Footer() {
     </footer>
   );
 }
-

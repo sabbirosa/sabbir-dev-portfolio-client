@@ -21,4 +21,3 @@ export const extracurricular = [
       "Volunteered at tech conferences, coding bootcamps, and mentorship programs for aspiring developers.",
   },
 ];
-

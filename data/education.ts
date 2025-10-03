@@ -15,4 +15,3 @@ export const education = [
     year: "Jan 2016 – Feb 2018",
   },
 ];
-

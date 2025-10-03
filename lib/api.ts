@@ -1,6 +1,7 @@
 // API utility functions for backend communication
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001/api";
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001/api";
 
 // Generic fetch wrapper with error handling
 async function fetchAPI<T>(
@@ -8,7 +9,7 @@ async function fetchAPI<T>(
   options: RequestInit = {}
 ): Promise<T> {
   const url = `${API_BASE_URL}${endpoint}`;
-  
+
   const response = await fetch(url, {
     headers: {
       "Content-Type": "application/json",
@@ -133,4 +134,3 @@ export const projectAPI = {
     });
   },
 };
-

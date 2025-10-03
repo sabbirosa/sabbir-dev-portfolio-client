@@ -1,3 +1,5 @@
+import Footer from "@/components/shared/Footer";
+import Header from "@/components/shared/Header";
 import { AuthProvider } from "@/contexts/AuthContext";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -15,9 +17,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sabbir Ahmed - Portfolio",
+  title: "Sabbir Ahmed - Full Stack Developer Portfolio",
   description:
-    "Full Stack Developer Portfolio - showcasing projects, blogs, and technical expertise",
+    "Full Stack Developer Portfolio - showcasing projects, blogs, and technical expertise. Specializing in React, Next.js, Node.js, and MongoDB.",
+  keywords: [
+    "portfolio",
+    "full stack developer",
+    "React",
+    "Next.js",
+    "Node.js",
+    "MongoDB",
+  ],
 };
 
 export default function RootLayout({
@@ -28,10 +38,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
       >
         <AuthProvider>
-          {children}
+          <div className="px-2 md:px-0">
+            <Header />
+          </div>
+          <main className="min-h-screen">{children}</main>
+          <Footer />
           <Toaster
             position="top-right"
             toastOptions={{

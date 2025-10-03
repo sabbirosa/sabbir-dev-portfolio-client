@@ -20,4 +20,3 @@ export const menuItems = [
     path: "/contact",
   },
 ];
-

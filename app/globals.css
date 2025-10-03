@@ -130,11 +130,11 @@
     @apply bg-background text-foreground;
     font-family: "Inter-Light", sans-serif;
   }
-  
+
   h2 {
     font-family: "Inter-Light", sans-serif;
   }
-  
+
   footer p {
     font-family: "Inter-Regular", sans-serif;
   }
@@ -189,14 +189,16 @@ html::-webkit-scrollbar {
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   border: 0.5px solid #2c2c35;
-  transition: background-color 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out,
+    backdrop-filter 0.3s ease-in-out;
 }
 
 .light .mobile-nav {
   background-color: rgba(255, 255, 255, 0.8);
   color: #1f2937;
   border: 0.5px solid #cacacc;
-  transition: background-color 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out,
+    backdrop-filter 0.3s ease-in-out;
 }
 
 .dark .nav {
