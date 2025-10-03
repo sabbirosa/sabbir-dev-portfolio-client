@@ -91,10 +91,7 @@ const MyThesis = ({
                            hover:border-[#7C3AED] hover:text-white hover:bg-[#7C3AED] transition-colors duration-300"
               >
                 E-Passport Prototype
-                <FontAwesomeIcon
-                  icon={faExternalLinkAlt}
-                  className="text-xs"
-                />
+                <FontAwesomeIcon icon={faExternalLinkAlt} className="text-xs" />
               </a>
             )}
           </div>

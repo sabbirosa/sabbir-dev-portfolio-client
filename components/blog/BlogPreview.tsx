@@ -127,3 +127,4 @@ export default function BlogPreview({ blogs, limit = 3 }: BlogPreviewProps) {
     </section>
   );
 }
+
