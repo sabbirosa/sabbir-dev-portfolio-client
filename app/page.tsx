@@ -1,103 +1,122 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Code2, Shield, User } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      <div className="container mx-auto px-4 py-16">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Header */}
+          <div className="mb-12">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+              Sabbir Ahmed
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
+              Full Stack Developer & Portfolio v2
+            </p>
+            <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+              Welcome to my portfolio website built with Next.js, TypeScript,
+              and modern web technologies. This is the foundation for showcasing
+              projects, blogs, and technical expertise.
+            </p>
+          </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          {/* Authentication Demo */}
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 mb-12">
+            <div className="flex items-center justify-center mb-6">
+              <Shield className="h-12 w-12 text-blue-600 dark:text-blue-400" />
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              Authentication System Implemented ✅
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
+              JWT-based authentication with bcrypt password hashing is now
+              ready. The admin dashboard is protected and fully functional.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-4 mb-6">
+              <div className="text-left p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                  ✅ Backend Features
+                </h3>
+                <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                  <li>• Express.js API server</li>
+                  <li>• JWT token authentication</li>
+                  <li>• bcrypt password hashing</li>
+                  <li>• Admin user seeding</li>
+                  <li>• Protected API endpoints</li>
+                </ul>
+              </div>
+              <div className="text-left p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                  ✅ Frontend Features
+                </h3>
+                <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                  <li>• React Context auth state</li>
+                  <li>• Protected routes component</li>
+                  <li>• Login form with validation</li>
+                  <li>• Admin dashboard</li>
+                  <li>• Toast notifications</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/admin/login">
+                <Button className="flex items-center space-x-2">
+                  <User className="h-4 w-4" />
+                  <span>Access Admin Dashboard</span>
+                </Button>
+              </Link>
+              <Button variant="outline" asChild>
+                <a
+                  href="http://localhost:3001/api/auth/credentials"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2"
+                >
+                  <Code2 className="h-4 w-4" />
+                  <span>View API Credentials</span>
+                </a>
+              </Button>
+            </div>
+          </div>
+
+          {/* Demo Credentials */}
+          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 mb-12">
+            <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-100 mb-3">
+              🔑 Demo Admin Credentials
+            </h3>
+            <div className="text-blue-800 dark:text-blue-200 space-y-1">
+              <p>
+                <strong>Email:</strong> admin@sabbir.dev
+              </p>
+              <p>
+                <strong>Password:</strong> Admin123!
+              </p>
+            </div>
+          </div>
+
+          {/* Next Steps */}
+          <div className="text-left bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-green-900 dark:text-green-100 mb-3">
+              🚀 Ready for Next Implementation
+            </h3>
+            <p className="text-green-800 dark:text-green-200 mb-3">
+              The authentication foundation is complete! You can now proceed
+              with:
+            </p>
+            <ul className="text-green-700 dark:text-green-300 space-y-2">
+              <li>• Blog management system (CRUD operations)</li>
+              <li>• Project showcase functionality</li>
+              <li>• About me section with SSG</li>
+              <li>• Public pages with ISR</li>
+              <li>• Rich text editor integration</li>
+            </ul>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
     </div>
   );
 }
