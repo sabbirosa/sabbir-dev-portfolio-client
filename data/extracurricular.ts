@@ -1,23 +1,28 @@
-export const extracurricular = [
+export interface ExtracurricularActivity {
+  role: string;
+  organization: string;
+  year: string;
+}
+
+export const extracurricular: ExtracurricularActivity[] = [
   {
-    role: "Technical Team Lead",
-    organization: "BRAC University Computer Club (BUCC)",
-    period: "2024 - Present",
-    description:
-      "Lead technical initiatives, mentor junior developers, and coordinate tech events for 1500+ members.",
+    role: "General Secretary (Acting)",
+    organization: "BRAC University Computer Club",
+    year: "May 2024 – Dec 2024",
   },
   {
-    role: "Executive Member",
-    organization: "BRAC University Computer Club (BUCC)",
-    period: "2023 - 2024",
-    description:
-      "Organized hackathons, workshops, and coding competitions. Contributed to club's technical infrastructure.",
+    role: "Director, Research & Development",
+    organization: "BRAC University Computer Club",
+    year: "Mar 2024 – Dec 2024",
   },
   {
-    role: "Volunteer",
-    organization: "Various Community Tech Events",
-    period: "2022 - Present",
-    description:
-      "Volunteered at tech conferences, coding bootcamps, and mentorship programs for aspiring developers.",
+    role: "Coordinator & Judge, IntraHacktive 1.0",
+    organization: "BUCC Competitive Programming Contest",
+    year: "Nov 2024",
+  },
+  {
+    role: "CPC Instructor",
+    organization: "BUCC Study Corner",
+    year: "May 2023 – Dec 2023",
   },
 ];
