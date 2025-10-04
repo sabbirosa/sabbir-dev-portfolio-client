@@ -44,14 +44,20 @@ async function fetchAPI<T>(
 // Auth API functions
 export const authAPI = {
   login: async (email: string, password: string) => {
-    return fetchAPI<{ success: boolean; data: { token: string; user: Record<string, unknown> } }>("/auth/login", {
+    return fetchAPI<{
+      success: boolean;
+      data: { token: string; user: Record<string, unknown> };
+    }>("/auth/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
     });
   },
 
   verify: async (token: string) => {
-    return fetchAPI<{ success: boolean; data: { user: Record<string, unknown> } }>("/auth/verify", {
+    return fetchAPI<{
+      success: boolean;
+      data: { user: Record<string, unknown> };
+    }>("/auth/verify", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -59,7 +65,10 @@ export const authAPI = {
   },
 
   getProfile: async (token: string) => {
-    return fetchAPI<{ success: boolean; data: { user: Record<string, unknown> } }>("/auth/profile", {
+    return fetchAPI<{
+      success: boolean;
+      data: { user: Record<string, unknown> };
+    }>("/auth/profile", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -71,31 +80,45 @@ export const authAPI = {
 export const blogAPI = {
   getAll: async (published?: boolean) => {
     const query = published !== undefined ? `?published=${published}` : "";
-    return fetchAPI<{ success: boolean; data: Record<string, unknown>[] }>(`/api/blogs${query}`);
+    return fetchAPI<{ success: boolean; data: Record<string, unknown>[] }>(
+      `/api/blogs${query}`
+    );
   },
 
   getById: async (id: string) => {
-    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(`/api/blogs/${id}`);
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(
+      `/api/blogs/${id}`
+    );
   },
 
   create: async (token: string, blogData: Record<string, unknown>) => {
-    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>("/api/blogs", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(blogData),
-    });
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(
+      "/api/blogs",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(blogData),
+      }
+    );
   },
 
-  update: async (token: string, id: string, blogData: Record<string, unknown>) => {
-    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(`/api/blogs/${id}`, {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(blogData),
-    });
+  update: async (
+    token: string,
+    id: string,
+    blogData: Record<string, unknown>
+  ) => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(
+      `/api/blogs/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(blogData),
+      }
+    );
   },
 
   delete: async (token: string, id: string) => {
@@ -112,39 +135,56 @@ export const blogAPI = {
 export const projectAPI = {
   getAll: async (featured?: boolean) => {
     const query = featured !== undefined ? `?featured=${featured}` : "";
-    return fetchAPI<{ success: boolean; data: Record<string, unknown>[] }>(`/api/projects${query}`);
+    return fetchAPI<{ success: boolean; data: Record<string, unknown>[] }>(
+      `/api/projects${query}`
+    );
   },
 
   getById: async (id: string) => {
-    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(`/api/projects/${id}`);
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(
+      `/api/projects/${id}`
+    );
   },
 
   create: async (token: string, projectData: Record<string, unknown>) => {
-    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>("/api/projects", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(projectData),
-    });
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(
+      "/api/projects",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(projectData),
+      }
+    );
   },
 
-  update: async (token: string, id: string, projectData: Record<string, unknown>) => {
-    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(`/api/projects/${id}`, {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(projectData),
-    });
+  update: async (
+    token: string,
+    id: string,
+    projectData: Record<string, unknown>
+  ) => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(
+      `/api/projects/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(projectData),
+      }
+    );
   },
 
   delete: async (token: string, id: string) => {
-    return fetchAPI<{ success: boolean; message: string }>(`/api/projects/${id}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    return fetchAPI<{ success: boolean; message: string }>(
+      `/api/projects/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
   },
 };

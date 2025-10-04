@@ -97,7 +97,8 @@ function CreateProjectContent() {
       toast.success("Project created successfully");
       router.push("/admin/projects");
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "Failed to create project";
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to create project";
       toast.error(errorMessage);
       console.error(error);
     } finally {

@@ -89,7 +89,8 @@ function CreateBlogContent() {
       toast.success("Blog created successfully");
       router.push("/admin/blogs");
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "Failed to create blog";
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to create blog";
       toast.error(errorMessage);
       console.error(error);
     } finally {

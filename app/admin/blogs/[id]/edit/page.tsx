@@ -102,7 +102,8 @@ function EditBlogContent() {
       toast.success("Blog updated successfully");
       router.push("/admin/blogs");
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "Failed to update blog";
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to update blog";
       toast.error(errorMessage);
       console.error(error);
     } finally {

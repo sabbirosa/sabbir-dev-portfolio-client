@@ -61,10 +61,14 @@ export default async function BlogPostPage({
 
         {/* Header */}
         <header className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{String(blog.title)}</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            {String(blog.title)}
+          </h1>
 
           <div className="flex items-center gap-4 text-gray-400 mb-4">
-            <time dateTime={String(blog.date)}>{formatDate(String(blog.date))}</time>
+            <time dateTime={String(blog.date)}>
+              {formatDate(String(blog.date))}
+            </time>
             <span>•</span>
             <span>{String(blog.readTime)}</span>
           </div>
@@ -106,4 +110,3 @@ export default async function BlogPostPage({
     </div>
   );
 }
-

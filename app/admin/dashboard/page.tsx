@@ -36,11 +36,17 @@ function DashboardContent() {
         setStats({
           totalBlogs: Array.isArray(blogsRes.data) ? blogsRes.data.length : 0,
           publishedBlogs: Array.isArray(blogsRes.data)
-            ? blogsRes.data.filter((b: Record<string, unknown>) => b.published === true).length
+            ? blogsRes.data.filter(
+                (b: Record<string, unknown>) => b.published === true
+              ).length
             : 0,
-          totalProjects: Array.isArray(projectsRes.data) ? projectsRes.data.length : 0,
+          totalProjects: Array.isArray(projectsRes.data)
+            ? projectsRes.data.length
+            : 0,
           featuredProjects: Array.isArray(projectsRes.data)
-            ? projectsRes.data.filter((p: Record<string, unknown>) => p.featured === true).length
+            ? projectsRes.data.filter(
+                (p: Record<string, unknown>) => p.featured === true
+              ).length
             : 0,
         });
       } catch (error) {

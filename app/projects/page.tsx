@@ -38,7 +38,9 @@ export default async function ProjectsPage() {
                   {String(project.title)}{" "}
                   <span className="text-gray-500">(0{index + 1})</span>
                 </h3>
-                <p className="text-gray-400 mb-3">{String(project.description)}</p>
+                <p className="text-gray-400 mb-3">
+                  {String(project.description)}
+                </p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {Array.isArray(project.techStack) &&
@@ -97,8 +99,8 @@ export default async function ProjectsPage() {
               {/* Image */}
               <div className="flex-1 flex justify-center">
                 <Image
-                  src={project.image}
-                  alt={project.title}
+                  src={String(project.image)}
+                  alt={String(project.title)}
                   width={600}
                   height={400}
                   className="w-full rounded-lg object-cover shadow-lg"
@@ -115,4 +117,3 @@ export default async function ProjectsPage() {
     </div>
   );
 }
-

@@ -100,14 +100,15 @@ export default async function ProjectDetailsPage({
         <div className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Tech Stack</h2>
           <div className="flex flex-wrap gap-3">
-            {Array.isArray(project.techStack) && project.techStack.map((tech: unknown, index: number) => (
-              <span
-                key={index}
-                className="px-4 py-2 bg-[#7C3AED]/20 text-[#7C3AED] rounded-full"
-              >
-                {String(tech)}
-              </span>
-            ))}
+            {Array.isArray(project.techStack) &&
+              project.techStack.map((tech: unknown, index: number) => (
+                <span
+                  key={index}
+                  className="px-4 py-2 bg-[#7C3AED]/20 text-[#7C3AED] rounded-full"
+                >
+                  {String(tech)}
+                </span>
+              ))}
           </div>
         </div>
 
@@ -124,18 +125,21 @@ export default async function ProjectDetailsPage({
         )}
 
         {/* Improvements */}
-        {Array.isArray(project.improvements) && project.improvements.length > 0 && (
-          <div className="mb-8">
-            <h2 className="text-2xl font-semibold mb-4">Future Improvements</h2>
-            <ul className="list-disc list-inside space-y-2 text-gray-300">
-              {project.improvements.map(
-                (improvement: unknown, index: number) => (
-                  <li key={index}>{String(improvement)}</li>
-                )
-              )}
-            </ul>
-          </div>
-        )}
+        {Array.isArray(project.improvements) &&
+          project.improvements.length > 0 && (
+            <div className="mb-8">
+              <h2 className="text-2xl font-semibold mb-4">
+                Future Improvements
+              </h2>
+              <ul className="list-disc list-inside space-y-2 text-gray-300">
+                {project.improvements.map(
+                  (improvement: unknown, index: number) => (
+                    <li key={index}>{String(improvement)}</li>
+                  )
+                )}
+              </ul>
+            </div>
+          )}
 
         {/* Year */}
         <div className="text-gray-500 text-sm">
@@ -145,4 +149,3 @@ export default async function ProjectDetailsPage({
     </div>
   );
 }
-

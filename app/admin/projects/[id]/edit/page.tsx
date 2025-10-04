@@ -57,7 +57,9 @@ function EditProjectContent() {
           liveLink: (project.liveLink as string) || "",
           codeLink: (project.codeLink as string) || "",
           year: (project.year as string) || "",
-          techStack: Array.isArray(project.techStack) ? project.techStack.join(", ") : "",
+          techStack: Array.isArray(project.techStack)
+            ? project.techStack.join(", ")
+            : "",
           featured: (project.featured as boolean) || false,
         });
       } catch (error) {
@@ -108,7 +110,8 @@ function EditProjectContent() {
       toast.success("Project updated successfully");
       router.push("/admin/projects");
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "Failed to update project";
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to update project";
       toast.error(errorMessage);
       console.error(error);
     } finally {

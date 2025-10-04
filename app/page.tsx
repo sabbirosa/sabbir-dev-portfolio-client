@@ -25,8 +25,20 @@ export default async function Home() {
     <>
       <HomeHero />
       <Skills />
-      {projects.length > 0 && <FeaturedWork projects={projects as unknown as Parameters<typeof FeaturedWork>[0]['projects']} />}
-      {blogs.length > 0 && <BlogPreview blogs={blogs as unknown as Parameters<typeof BlogPreview>[0]['blogs']} />}
+      {projects.length > 0 && (
+        <FeaturedWork
+          projects={
+            projects as unknown as Parameters<
+              typeof FeaturedWork
+            >[0]["projects"]
+          }
+        />
+      )}
+      {blogs.length > 0 && (
+        <BlogPreview
+          blogs={blogs as unknown as Parameters<typeof BlogPreview>[0]["blogs"]}
+        />
+      )}
     </>
   );
 }
