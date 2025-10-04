@@ -102,4 +102,3 @@ const MyThesis = ({
 };
 
 export default MyThesis;
-

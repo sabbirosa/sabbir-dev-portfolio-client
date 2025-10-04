@@ -28,7 +28,7 @@ export default function Header() {
   return (
     <>
       {/* Desktop Header */}
-      <nav className="nav max-w-screen-sm backdrop-blur-md pointer-events-auto sticky top-1 flex items-center justify-between gap-6 rounded-full py-2 mx-auto transition-colors z-50 px-6">
+      <nav className="nav max-w-screen-sm backdrop-blur-md pointer-events-auto sticky top-1 flex items-center justify-between gap-6 rounded-full py-2 mx-auto transition-colors z-50 px-6 mt-4">
         <Link className="font-medium text-2xl sm:text-xl" href="/">
           Sabbir<span className="text-[#7C3AED]">.</span>
         </Link>

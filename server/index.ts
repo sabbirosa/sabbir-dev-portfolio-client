@@ -52,8 +52,8 @@ app.use(
   }
 );
 
-// 404 handler
-app.use("*", (req, res) => {
+// 404 handler - must come after all routes
+app.use((req, res) => {
   res.status(404).json({
     success: false,
     message: "API endpoint not found",
