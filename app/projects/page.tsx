@@ -8,11 +8,11 @@ import Link from "next/link";
 export const revalidate = 60; // ISR revalidation
 
 export default async function ProjectsPage() {
-  let projects = [];
+  let projects: Record<string, unknown>[] = [];
 
   try {
     const response = await projectAPI.getAll();
-    projects = response.data;
+    projects = response.data as Record<string, unknown>[];
   } catch (error) {
     console.error("Error fetching projects:", error);
   }
@@ -27,35 +27,36 @@ export default async function ProjectsPage() {
         </p>
 
         <div className="space-y-12">
-          {projects.map((project: any, index: number) => (
+          {projects.map((project: Record<string, unknown>, index: number) => (
             <div
-              key={project._id}
+              key={String(project._id)}
               className="flex flex-col md:flex-row items-center gap-6 border-b border-gray-700 pb-8"
             >
               {/* Text */}
               <div className="flex-1 text-left">
                 <h3 className="text-2xl font-medium mb-2">
-                  {project.title}{" "}
+                  {String(project.title)}{" "}
                   <span className="text-gray-500">(0{index + 1})</span>
                 </h3>
-                <p className="text-gray-400 mb-3">{project.description}</p>
+                <p className="text-gray-400 mb-3">{String(project.description)}</p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.techStack
-                    .slice(0, 5)
-                    .map((tech: string, i: number) => (
-                      <span
-                        key={i}
-                        className="text-xs px-3 py-1 bg-[#7C3AED]/20 text-[#7C3AED] rounded-full"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  {Array.isArray(project.techStack) &&
+                    (project.techStack as unknown[])
+                      .slice(0, 5)
+                      .map((tech: unknown, i: number) => (
+                        <span
+                          key={i}
+                          className="text-xs px-3 py-1 bg-[#7C3AED]/20 text-[#7C3AED] rounded-full"
+                        >
+                          {String(tech)}
+                        </span>
+                      ))}
                 </div>
 
                 <div className="mt-3 flex gap-3 flex-wrap">
                   <a
-                    href={project.liveLink}
+                    href={String(project.liveLink)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm px-4 py-2 border border-[#7C3AED] text-[#7C3AED] rounded-full hover:bg-[#7C3AED] hover:text-white transition duration-300"
@@ -66,9 +67,9 @@ export default async function ProjectsPage() {
                       className="ml-2 w-3 h-3 -rotate-45"
                     />
                   </a>
-                  {project.codeLink && (
+                  {Boolean(project.codeLink) && (
                     <a
-                      href={project.codeLink}
+                      href={String(project.codeLink)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm px-4 py-2 border border-gray-400 text-gray-300 rounded-full hover:border-[#7C3AED] hover:text-white hover:bg-[#7C3AED] transition duration-300"

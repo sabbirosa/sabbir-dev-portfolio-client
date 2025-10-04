@@ -51,14 +51,14 @@ function EditProjectContent() {
         const response = await projectAPI.getById(params.id as string);
         const project = response.data;
         setFormData({
-          title: project.title || "",
-          description: project.description || "",
-          image: project.image || "",
-          liveLink: project.liveLink || "",
-          codeLink: project.codeLink || "",
-          year: project.year || "",
-          techStack: project.techStack?.join(", ") || "",
-          featured: project.featured || false,
+          title: (project.title as string) || "",
+          description: (project.description as string) || "",
+          image: (project.image as string) || "",
+          liveLink: (project.liveLink as string) || "",
+          codeLink: (project.codeLink as string) || "",
+          year: (project.year as string) || "",
+          techStack: Array.isArray(project.techStack) ? project.techStack.join(", ") : "",
+          featured: (project.featured as boolean) || false,
         });
       } catch (error) {
         toast.error("Failed to load project");
@@ -107,8 +107,9 @@ function EditProjectContent() {
       await projectAPI.update(token, params.id as string, projectData);
       toast.success("Project updated successfully");
       router.push("/admin/projects");
-    } catch (error: any) {
-      toast.error(error?.message || "Failed to update project");
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to update project";
+      toast.error(errorMessage);
       console.error(error);
     } finally {
       setSaving(false);
@@ -195,6 +196,7 @@ function EditProjectContent() {
               />
               {formData.image && (
                 <div className="mt-3 relative h-40 bg-gray-700 rounded-lg overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={formData.image}
                     alt="Preview"

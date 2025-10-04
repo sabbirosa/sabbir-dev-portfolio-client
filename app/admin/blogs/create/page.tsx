@@ -88,8 +88,9 @@ function CreateBlogContent() {
       await blogAPI.create(token, blogData);
       toast.success("Blog created successfully");
       router.push("/admin/blogs");
-    } catch (error: any) {
-      toast.error(error?.message || "Failed to create blog");
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to create blog";
+      toast.error(errorMessage);
       console.error(error);
     } finally {
       setSaving(false);

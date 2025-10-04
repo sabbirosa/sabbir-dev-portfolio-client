@@ -33,7 +33,7 @@ export default function AdminLayout({
       await logout();
       toast.success("Logged out successfully");
       router.push("/admin/login");
-    } catch (error) {
+    } catch {
       toast.error("Logout failed");
     }
   };

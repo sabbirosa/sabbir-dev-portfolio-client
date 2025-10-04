@@ -32,7 +32,7 @@ export default function FeaturedWork({ projects }: FeaturedWorkProps) {
           </p>
           <Link href="/contact">
             <button className="contact-btn border p-3 border-black rounded-3xl cursor-pointer hover:bg-black hover:text-white transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 mb-10">
-              Let's Discuss{" "}
+              Let&apos;s Discuss{" "}
               <FontAwesomeIcon
                 icon={faArrowRight}
                 className="mx-2 w-4 h-4 -rotate-45"

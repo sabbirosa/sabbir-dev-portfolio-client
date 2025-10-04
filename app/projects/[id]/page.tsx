@@ -10,10 +10,10 @@ export const revalidate = 60; // ISR revalidation
 export async function generateStaticParams() {
   try {
     const response = await projectAPI.getAll();
-    return response.data.map((project: any) => ({
-      id: project._id,
+    return response.data.map((project: Record<string, unknown>) => ({
+      id: project._id as string,
     }));
-  } catch (error) {
+  } catch {
     return [];
   }
 }
@@ -23,7 +23,7 @@ export default async function ProjectDetailsPage({
 }: {
   params: { id: string };
 }) {
-  let project: any = null;
+  let project: Record<string, unknown> | null = null;
 
   try {
     const response = await projectAPI.getById(params.id);
@@ -54,15 +54,15 @@ export default async function ProjectDetailsPage({
           >
             ← Back to Projects
           </Link>
-          <h1 className="text-5xl font-bold mb-4">{project.title}</h1>
-          <p className="text-xl text-gray-400">{project.description}</p>
+          <h1 className="text-5xl font-bold mb-4">{String(project.title)}</h1>
+          <p className="text-xl text-gray-400">{String(project.description)}</p>
         </div>
 
         {/* Project Image */}
         <div className="mb-8">
           <Image
-            src={project.image}
-            alt={project.title}
+            src={String(project.image)}
+            alt={String(project.title)}
             width={1200}
             height={600}
             className="w-full rounded-lg shadow-xl"
@@ -72,7 +72,7 @@ export default async function ProjectDetailsPage({
         {/* Links */}
         <div className="flex gap-4 mb-8 flex-wrap">
           <a
-            href={project.liveLink}
+            href={String(project.liveLink)}
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-3 border border-[#7C3AED] text-[#7C3AED] rounded-full hover:bg-[#7C3AED] hover:text-white transition duration-300"
@@ -83,9 +83,9 @@ export default async function ProjectDetailsPage({
               className="ml-2 w-4 h-4 -rotate-45"
             />
           </a>
-          {project.codeLink && (
+          {Boolean(project.codeLink) && (
             <a
-              href={project.codeLink}
+              href={String(project.codeLink)}
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 border border-gray-400 text-gray-300 rounded-full hover:border-[#7C3AED] hover:text-white hover:bg-[#7C3AED] transition duration-300"
@@ -100,37 +100,37 @@ export default async function ProjectDetailsPage({
         <div className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Tech Stack</h2>
           <div className="flex flex-wrap gap-3">
-            {project.techStack.map((tech: string, index: number) => (
+            {Array.isArray(project.techStack) && project.techStack.map((tech: unknown, index: number) => (
               <span
                 key={index}
                 className="px-4 py-2 bg-[#7C3AED]/20 text-[#7C3AED] rounded-full"
               >
-                {tech}
+                {String(tech)}
               </span>
             ))}
           </div>
         </div>
 
         {/* Challenges */}
-        {project.challenges && project.challenges.length > 0 && (
+        {Array.isArray(project.challenges) && project.challenges.length > 0 && (
           <div className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Challenges</h2>
             <ul className="list-disc list-inside space-y-2 text-gray-300">
-              {project.challenges.map((challenge: string, index: number) => (
-                <li key={index}>{challenge}</li>
+              {project.challenges.map((challenge: unknown, index: number) => (
+                <li key={index}>{String(challenge)}</li>
               ))}
             </ul>
           </div>
         )}
 
         {/* Improvements */}
-        {project.improvements && project.improvements.length > 0 && (
+        {Array.isArray(project.improvements) && project.improvements.length > 0 && (
           <div className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Future Improvements</h2>
             <ul className="list-disc list-inside space-y-2 text-gray-300">
               {project.improvements.map(
-                (improvement: string, index: number) => (
-                  <li key={index}>{improvement}</li>
+                (improvement: unknown, index: number) => (
+                  <li key={index}>{String(improvement)}</li>
                 )
               )}
             </ul>
@@ -139,7 +139,7 @@ export default async function ProjectDetailsPage({
 
         {/* Year */}
         <div className="text-gray-500 text-sm">
-          <p>Year: {project.year}</p>
+          <p>Year: {String(project.year)}</p>
         </div>
       </div>
     </div>

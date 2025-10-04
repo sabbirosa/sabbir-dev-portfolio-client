@@ -47,7 +47,7 @@ const MyThesis = ({
           </p>
 
           <p className="text-base md:text-lg text-gray-200/90 leading-relaxed">
-            I conducted a mixed-methods study on Bangladesh's e-government
+            I conducted a mixed-methods study on Bangladesh&apos;s e-government
             platforms focused on citizens with limited digital literacy. The
             work diagnoses recurring UX barriers and proposes standardized,
             accessible design solutions that government teams can adopt quickly.

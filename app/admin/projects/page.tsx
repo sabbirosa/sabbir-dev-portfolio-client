@@ -39,7 +39,7 @@ function ProjectsContent() {
     try {
       setLoading(true);
       const response = await projectAPI.getAll();
-      setProjects(response.data || []);
+      setProjects((response.data as unknown as Project[]) || []);
     } catch (error) {
       toast.error("Failed to fetch projects");
       console.error(error);

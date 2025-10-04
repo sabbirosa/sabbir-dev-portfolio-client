@@ -140,9 +140,58 @@
   }
 }
 
+/* Fix Tailwind gray text colors for better contrast in light mode */
+.light .text-gray-300,
+.light .text-gray-400 {
+  color: #4b5563 !important; /* gray-600 for better contrast */
+}
+
+.light .text-gray-500 {
+  color: #6b7280 !important; /* gray-500 is okay but slightly darker */
+}
+
+.light .text-gray-600 {
+  color: #374151 !important; /* gray-700 for strong contrast */
+}
+
+.light .text-white {
+  color: #111827 !important; /* almost black for high contrast */
+}
+
+/* Fix border colors in light mode */
+.light .border-gray-400 {
+  border-color: #9ca3af !important; /* visible but subtle */
+}
+
+.light .border-gray-600 {
+  border-color: #d1d5db !important; /* gray-300 for light mode */
+}
+
+.light .border-black {
+  border-color: #1f2937 !important;
+}
+
+/* Fix background colors in light mode for better contrast */
+.light .bg-black {
+  background-color: #1f2937 !important;
+}
+
+.light .hover\:bg-black:hover {
+  background-color: #1f2937 !important;
+}
+
+.light .hover\:text-white:hover {
+  color: #ffffff !important;
+}
+
 /* Selection styles */
-::selection {
+.dark ::selection {
   background-color: #6a7282;
+  color: white;
+}
+
+.light ::selection {
+  background-color: #7c3aed;
   color: white;
 }
 
@@ -168,7 +217,7 @@ html::-webkit-scrollbar {
 /* Dark/Light mode theme */
 .light {
   background-color: #f7f8fa;
-  color: black;
+  color: #1f2937;
   transition: background-color 0.3s ease-in-out;
 }
 
@@ -180,6 +229,10 @@ html::-webkit-scrollbar {
 
 .dark .bottom {
   background: linear-gradient(to top, black, transparent);
+}
+
+.light .bottom {
+  background: linear-gradient(to top, #f7f8fa, transparent);
 }
 
 /* Navigation styles */
@@ -220,6 +273,20 @@ html::-webkit-scrollbar {
   color: #969697;
 }
 
+.light .nav-items {
+  color: #4b5563;
+}
+
+.light .nav {
+  color: #1f2937;
+}
+
+.light .togglebtn {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #1f2937;
+  border: 1px solid #cacacc;
+}
+
 /* Footer and sections */
 .dark .footer,
 .dark section,
@@ -227,9 +294,20 @@ html::-webkit-scrollbar {
   color: white;
 }
 
+.light .footer,
+.light section,
+.light footer h2 {
+  color: #1f2937;
+}
+
 .dark footer .contact-btn {
   color: black;
   background-color: white;
+}
+
+.light footer .contact-btn {
+  color: white;
+  background-color: #1f2937;
 }
 
 .dark .work,
@@ -237,13 +315,24 @@ html::-webkit-scrollbar {
   background-color: #21291f;
 }
 
+.light .work,
+.light footer .work {
+  background-color: #e5e7eb;
+}
+
 .dark .footer,
 .dark .scroll-btn {
   background-color: #111116;
 }
 
+.light .footer,
+.light .scroll-btn {
+  background-color: #ffffff;
+}
+
 /* Purple theme */
-.dark .intro .span {
+.dark .intro .span,
+.light .intro .span {
   color: #7c3aed;
 }
 
@@ -252,15 +341,33 @@ html::-webkit-scrollbar {
   border: 1px solid #191920;
 }
 
+.light hr,
+.light .skills {
+  border: 1px solid #d1d5db;
+}
+
 .dark .skills {
   background-color: #191920;
   color: white;
+}
+
+.light .skills {
+  background-color: #f3f4f6;
+  color: #1f2937;
 }
 
 .dark .service-tag .contact-btn,
 .dark .work-tage .contact-btn,
 .dark .resume-btn {
   border: 1px solid #191920;
+}
+
+.light .service-tag .contact-btn,
+.light .work-tage .contact-btn,
+.light .resume-btn {
+  border: 1px solid #d1d5db;
+  color: #1f2937;
+  background-color: white;
 }
 
 .dark .service-tag .contact-btn:hover,
@@ -270,12 +377,28 @@ html::-webkit-scrollbar {
   color: black;
 }
 
+.light .service-tag .contact-btn:hover,
+.light .work-tage .contact-btn:hover,
+.light .resume-btn:hover {
+  background-color: #1f2937;
+  color: white;
+}
+
 .dark #scrolling-container {
   color: #2c2c35;
 }
 
+.light #scrolling-container {
+  color: #d1d5db;
+}
+
 .dark .social-links a {
   color: #52525f;
+  transition: 0.3s;
+}
+
+.light .social-links a {
+  color: #6b7280;
   transition: 0.3s;
 }
 
@@ -284,8 +407,17 @@ html::-webkit-scrollbar {
   transition: 0.3s;
 }
 
+.light .social-links a:hover {
+  color: #1f2937;
+  transition: 0.3s;
+}
+
 .dark .social-links:hover .underline {
   background-color: white;
+}
+
+.light .social-links:hover .underline {
+  background-color: #1f2937;
 }
 
 /* Blog styles */
@@ -384,18 +516,35 @@ html::-webkit-scrollbar {
 }
 
 /* Prose styling for blog content */
-.prose {
+.dark .prose {
   color: #e5e7eb;
   max-width: 65ch;
 }
 
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4,
-.prose h5,
-.prose h6 {
+.light .prose {
+  color: #374151;
+  max-width: 65ch;
+}
+
+.dark .prose h1,
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose h4,
+.dark .prose h5,
+.dark .prose h6 {
   color: #f3f4f6;
+  font-weight: 700;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.light .prose h1,
+.light .prose h2,
+.light .prose h3,
+.light .prose h4,
+.light .prose h5,
+.light .prose h6 {
+  color: #111827;
   font-weight: 700;
   margin-top: 2em;
   margin-bottom: 1em;
@@ -428,16 +577,25 @@ html::-webkit-scrollbar {
   font-weight: 500;
 }
 
-.prose a:hover {
+.dark .prose a:hover {
   color: #a78bfa;
 }
 
-.prose strong {
+.light .prose a:hover {
+  color: #6d28d9;
+}
+
+.dark .prose strong {
   color: #f3f4f6;
   font-weight: 600;
 }
 
-.prose code {
+.light .prose strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+.dark .prose code {
   color: #fbbf24;
   background-color: rgba(124, 58, 237, 0.1);
   padding: 0.2em 0.4em;
@@ -446,9 +604,28 @@ html::-webkit-scrollbar {
   font-family: monospace;
 }
 
-.prose pre {
+.light .prose code {
+  color: #dc2626;
+  background-color: rgba(124, 58, 237, 0.08);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-family: monospace;
+}
+
+.dark .prose pre {
   background-color: #1f2937;
   color: #e5e7eb;
+  padding: 1em;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.light .prose pre {
+  background-color: #f3f4f6;
+  color: #1f2937;
   padding: 1em;
   border-radius: 0.5rem;
   overflow-x: auto;
@@ -475,11 +652,20 @@ html::-webkit-scrollbar {
   margin-bottom: 0.5em;
 }
 
-.prose blockquote {
+.dark .prose blockquote {
   font-style: italic;
   border-left: 4px solid #7c3aed;
   padding-left: 1em;
   margin-top: 1.5em;
   margin-bottom: 1.5em;
   color: #9ca3af;
+}
+
+.light .prose blockquote {
+  font-style: italic;
+  border-left: 4px solid #7c3aed;
+  padding-left: 1em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  color: #6b7280;
 }

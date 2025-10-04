@@ -7,16 +7,16 @@ import { blogAPI, projectAPI } from "@/lib/api";
 export const revalidate = 60; // ISR revalidation every 60 seconds
 
 export default async function Home() {
-  let projects = [];
-  let blogs = [];
+  let projects: Record<string, unknown>[] = [];
+  let blogs: Record<string, unknown>[] = [];
 
   try {
     // Fetch featured projects and published blogs
     const projectsRes = await projectAPI.getAll(true);
     const blogsRes = await blogAPI.getAll(true);
 
-    projects = projectsRes.data.slice(0, 3);
-    blogs = blogsRes.data.slice(0, 3);
+    projects = (projectsRes.data as Record<string, unknown>[]).slice(0, 3);
+    blogs = (blogsRes.data as Record<string, unknown>[]).slice(0, 3);
   } catch (error) {
     console.error("Error fetching data:", error);
   }
@@ -25,8 +25,8 @@ export default async function Home() {
     <>
       <HomeHero />
       <Skills />
-      {projects.length > 0 && <FeaturedWork projects={projects} />}
-      {blogs.length > 0 && <BlogPreview blogs={blogs} />}
+      {projects.length > 0 && <FeaturedWork projects={projects as unknown as Parameters<typeof FeaturedWork>[0]['projects']} />}
+      {blogs.length > 0 && <BlogPreview blogs={blogs as unknown as Parameters<typeof BlogPreview>[0]['blogs']} />}
     </>
   );
 }

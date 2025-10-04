@@ -32,9 +32,9 @@ async function fetchAPI<T>(
     }
 
     return data;
-  } catch (error: any) {
+  } catch (error) {
     clearTimeout(timeoutId);
-    if (error.name === "AbortError") {
+    if (error instanceof Error && error.name === "AbortError") {
       throw new Error("Request timeout - backend server may not be running");
     }
     throw error;
@@ -44,14 +44,14 @@ async function fetchAPI<T>(
 // Auth API functions
 export const authAPI = {
   login: async (email: string, password: string) => {
-    return fetchAPI<any>("/auth/login", {
+    return fetchAPI<{ success: boolean; data: { token: string; user: Record<string, unknown> } }>("/auth/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
     });
   },
 
   verify: async (token: string) => {
-    return fetchAPI<any>("/auth/verify", {
+    return fetchAPI<{ success: boolean; data: { user: Record<string, unknown> } }>("/auth/verify", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -59,7 +59,7 @@ export const authAPI = {
   },
 
   getProfile: async (token: string) => {
-    return fetchAPI<any>("/auth/profile", {
+    return fetchAPI<{ success: boolean; data: { user: Record<string, unknown> } }>("/auth/profile", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -71,15 +71,15 @@ export const authAPI = {
 export const blogAPI = {
   getAll: async (published?: boolean) => {
     const query = published !== undefined ? `?published=${published}` : "";
-    return fetchAPI<any>(`/api/blogs${query}`);
+    return fetchAPI<{ success: boolean; data: Record<string, unknown>[] }>(`/api/blogs${query}`);
   },
 
   getById: async (id: string) => {
-    return fetchAPI<any>(`/api/blogs/${id}`);
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(`/api/blogs/${id}`);
   },
 
-  create: async (token: string, blogData: any) => {
-    return fetchAPI<any>("/api/blogs", {
+  create: async (token: string, blogData: Record<string, unknown>) => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>("/api/blogs", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -88,8 +88,8 @@ export const blogAPI = {
     });
   },
 
-  update: async (token: string, id: string, blogData: any) => {
-    return fetchAPI<any>(`/api/blogs/${id}`, {
+  update: async (token: string, id: string, blogData: Record<string, unknown>) => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(`/api/blogs/${id}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -99,7 +99,7 @@ export const blogAPI = {
   },
 
   delete: async (token: string, id: string) => {
-    return fetchAPI<any>(`/api/blogs/${id}`, {
+    return fetchAPI<{ success: boolean; message: string }>(`/api/blogs/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -112,15 +112,15 @@ export const blogAPI = {
 export const projectAPI = {
   getAll: async (featured?: boolean) => {
     const query = featured !== undefined ? `?featured=${featured}` : "";
-    return fetchAPI<any>(`/api/projects${query}`);
+    return fetchAPI<{ success: boolean; data: Record<string, unknown>[] }>(`/api/projects${query}`);
   },
 
   getById: async (id: string) => {
-    return fetchAPI<any>(`/api/projects/${id}`);
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(`/api/projects/${id}`);
   },
 
-  create: async (token: string, projectData: any) => {
-    return fetchAPI<any>("/api/projects", {
+  create: async (token: string, projectData: Record<string, unknown>) => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>("/api/projects", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -129,8 +129,8 @@ export const projectAPI = {
     });
   },
 
-  update: async (token: string, id: string, projectData: any) => {
-    return fetchAPI<any>(`/api/projects/${id}`, {
+  update: async (token: string, id: string, projectData: Record<string, unknown>) => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(`/api/projects/${id}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -140,7 +140,7 @@ export const projectAPI = {
   },
 
   delete: async (token: string, id: string) => {
-    return fetchAPI<any>(`/api/projects/${id}`, {
+    return fetchAPI<{ success: boolean; message: string }>(`/api/projects/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,

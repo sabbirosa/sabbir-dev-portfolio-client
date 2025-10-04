@@ -6,10 +6,10 @@ export const revalidate = 60; // ISR revalidation
 export async function generateStaticParams() {
   try {
     const response = await blogAPI.getAll(true);
-    return response.data.map((blog: any) => ({
-      id: blog._id,
+    return response.data.map((blog: Record<string, unknown>) => ({
+      id: blog._id as string,
     }));
-  } catch (error) {
+  } catch {
     return [];
   }
 }
@@ -19,7 +19,7 @@ export default async function BlogPostPage({
 }: {
   params: { id: string };
 }) {
-  let blog: any = null;
+  let blog: Record<string, unknown> | null = null;
 
   try {
     const response = await blogAPI.getById(params.id);
@@ -61,35 +61,36 @@ export default async function BlogPostPage({
 
         {/* Header */}
         <header className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{blog.title}</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">{String(blog.title)}</h1>
 
           <div className="flex items-center gap-4 text-gray-400 mb-4">
-            <time dateTime={blog.date}>{formatDate(blog.date)}</time>
+            <time dateTime={String(blog.date)}>{formatDate(String(blog.date))}</time>
             <span>•</span>
-            <span>{blog.readTime}</span>
+            <span>{String(blog.readTime)}</span>
           </div>
 
           <div className="flex flex-wrap gap-2">
-            {blog.tags.map((tag: string) => (
-              <span
-                key={tag}
-                className="px-3 py-1 text-sm bg-[#7C3AED]/20 text-[#7C3AED] rounded-full"
-              >
-                {tag}
-              </span>
-            ))}
+            {Array.isArray(blog.tags) &&
+              blog.tags.map((tag: unknown) => (
+                <span
+                  key={String(tag)}
+                  className="px-3 py-1 text-sm bg-[#7C3AED]/20 text-[#7C3AED] rounded-full"
+                >
+                  {String(tag)}
+                </span>
+              ))}
           </div>
         </header>
 
         {/* Description */}
         <div className="text-xl text-gray-300 mb-8 leading-relaxed">
-          {blog.description}
+          {String(blog.description)}
         </div>
 
         {/* Content */}
         <div
           className="prose prose-invert prose-lg max-w-none"
-          dangerouslySetInnerHTML={{ __html: blog.content }}
+          dangerouslySetInnerHTML={{ __html: String(blog.content) }}
         />
 
         {/* Footer */}

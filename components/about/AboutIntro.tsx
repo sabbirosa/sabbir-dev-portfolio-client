@@ -9,13 +9,13 @@ export default function AboutIntro() {
         {/* Text Section */}
         <div className="w-full space-y-4 text-left max-md:text-start">
           <h1 className="text-4xl text-balance sm:text-7xl font-semibold py-5">
-            I'm an aspiring software engineer passionate about creating{" "}
+            I&apos;m an aspiring software engineer passionate about creating{" "}
             <span className="text-[#7C3AED]">interactive, impactful</span>{" "}
             digital experiences
           </h1>
           <div className="text-right">
             <p className="text-balance sm:text-xl max-sm:text-start mb-10 max-md:ml-0 ml-40">
-              I'm{" "}
+              I&apos;m{" "}
               <ShinyText
                 text="Sabbir Bin Abdul Latif"
                 disabled={false}

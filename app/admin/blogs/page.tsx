@@ -37,7 +37,7 @@ function BlogsContent() {
     try {
       setLoading(true);
       const response = await blogAPI.getAll();
-      setBlogs(response.data || []);
+      setBlogs((response.data as unknown as Blog[]) || []);
     } catch (error) {
       toast.error("Failed to fetch blogs");
       console.error(error);

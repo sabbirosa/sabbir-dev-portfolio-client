@@ -33,7 +33,9 @@ function SettingsContent() {
 
   const handleProfileUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.info("Profile update feature coming soon!");
+    toast("Profile update feature coming soon!", {
+      icon: "ℹ️",
+    });
   };
 
   const handlePasswordChange = async (e: React.FormEvent) => {
@@ -49,7 +51,9 @@ function SettingsContent() {
       return;
     }
 
-    toast.info("Password change feature coming soon!");
+    toast("Password change feature coming soon!", {
+      icon: "ℹ️",
+    });
   };
 
   return (
@@ -243,19 +247,6 @@ function SettingsContent() {
                   </button>
                 </div>
               </form>
-
-              {/* Additional Security Info */}
-              <div className="mt-8 p-4 bg-gray-700 rounded-lg border border-gray-600">
-                <h3 className="text-sm font-semibold text-white mb-2">
-                  Security Tips
-                </h3>
-                <ul className="text-xs text-gray-400 space-y-1">
-                  <li>• Use a strong password with at least 8 characters</li>
-                  <li>• Include uppercase, lowercase, numbers, and symbols</li>
-                  <li>• Don't reuse passwords from other accounts</li>
-                  <li>• Change your password regularly</li>
-                </ul>
-              </div>
             </div>
           )}
         </div>

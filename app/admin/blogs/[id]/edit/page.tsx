@@ -47,12 +47,12 @@ function EditBlogContent() {
         const response = await blogAPI.getById(params.id as string);
         const blog = response.data;
         setFormData({
-          title: blog.title || "",
-          description: blog.description || "",
-          content: blog.content || "",
-          tags: blog.tags?.join(", ") || "",
-          readTime: blog.readTime || "",
-          published: blog.published || false,
+          title: (blog.title as string) || "",
+          description: (blog.description as string) || "",
+          content: (blog.content as string) || "",
+          tags: Array.isArray(blog.tags) ? blog.tags.join(", ") : "",
+          readTime: (blog.readTime as string) || "",
+          published: (blog.published as boolean) || false,
         });
       } catch (error) {
         toast.error("Failed to load blog");
@@ -101,8 +101,9 @@ function EditBlogContent() {
       await blogAPI.update(token, params.id as string, blogData);
       toast.success("Blog updated successfully");
       router.push("/admin/blogs");
-    } catch (error: any) {
-      toast.error(error?.message || "Failed to update blog");
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to update blog";
+      toast.error(errorMessage);
       console.error(error);
     } finally {
       setSaving(false);

@@ -96,8 +96,9 @@ function CreateProjectContent() {
       await projectAPI.create(token, projectData);
       toast.success("Project created successfully");
       router.push("/admin/projects");
-    } catch (error: any) {
-      toast.error(error?.message || "Failed to create project");
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to create project";
+      toast.error(errorMessage);
       console.error(error);
     } finally {
       setSaving(false);
@@ -179,6 +180,7 @@ function CreateProjectContent() {
               </p>
               {formData.image && (
                 <div className="mt-3 relative h-40 bg-gray-700 rounded-lg overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={formData.image}
                     alt="Preview"

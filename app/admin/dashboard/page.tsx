@@ -34,12 +34,14 @@ function DashboardContent() {
         ]);
 
         setStats({
-          totalBlogs: blogsRes.data?.length || 0,
-          publishedBlogs:
-            blogsRes.data?.filter((b: any) => b.published).length || 0,
-          totalProjects: projectsRes.data?.length || 0,
-          featuredProjects:
-            projectsRes.data?.filter((p: any) => p.featured).length || 0,
+          totalBlogs: Array.isArray(blogsRes.data) ? blogsRes.data.length : 0,
+          publishedBlogs: Array.isArray(blogsRes.data)
+            ? blogsRes.data.filter((b: Record<string, unknown>) => b.published === true).length
+            : 0,
+          totalProjects: Array.isArray(projectsRes.data) ? projectsRes.data.length : 0,
+          featuredProjects: Array.isArray(projectsRes.data)
+            ? projectsRes.data.filter((p: Record<string, unknown>) => p.featured === true).length
+            : 0,
         });
       } catch (error) {
         console.error("Error fetching stats:", error);

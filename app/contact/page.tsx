@@ -52,7 +52,7 @@ export default function ContactPage() {
       } else {
         alert("Something went wrong. Please try again.");
       }
-    } catch (error) {
+    } catch {
       alert("Failed to send the message. Please check your connection.");
     }
   };
