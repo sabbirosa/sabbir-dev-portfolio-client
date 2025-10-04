@@ -182,6 +182,7 @@ export function RichTextEditor({
   placeholder = "Start writing your blog content...",
 }: RichTextEditorProps) {
   const editor = useEditor({
+    immediatelyRender: false,
     extensions: [
       StarterKit.configure({
         heading: {
