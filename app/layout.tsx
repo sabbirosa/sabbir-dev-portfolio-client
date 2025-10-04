@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sabbir Ahmed - Full Stack Developer Portfolio",
+  title: "Sabbir Bin Abdul Latif - Full Stack Developer Portfolio",
   description:
     "Full Stack Developer Portfolio - showcasing projects, blogs, and technical expertise. Specializing in React, Next.js, Node.js, and MongoDB.",
   keywords: [
