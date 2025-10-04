@@ -47,7 +47,7 @@ export const authAPI = {
     return fetchAPI<{
       success: boolean;
       data: { token: string; user: Record<string, unknown> };
-    }>("/auth/login", {
+    }>("/api/auth/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
     });
@@ -57,7 +57,7 @@ export const authAPI = {
     return fetchAPI<{
       success: boolean;
       data: { user: Record<string, unknown> };
-    }>("/auth/verify", {
+    }>("/api/auth/verify", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -68,7 +68,7 @@ export const authAPI = {
     return fetchAPI<{
       success: boolean;
       data: { user: Record<string, unknown> };
-    }>("/auth/profile", {
+    }>("/api/auth/profile", {
       headers: {
         Authorization: `Bearer ${token}`,
       },

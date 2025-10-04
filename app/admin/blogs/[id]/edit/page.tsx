@@ -1,6 +1,7 @@
 "use client";
 
 import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
+import { RichTextEditor } from "@/components/blog/RichTextEditor";
 import { useAuth } from "@/contexts/AuthContext";
 import { blogAPI } from "@/lib/api";
 import { ArrowLeft, Save } from "lucide-react";
@@ -76,6 +77,13 @@ function EditBlogContent() {
       ...prev,
       [name]:
         type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
+    }));
+  };
+
+  const handleContentChange = (content: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      content,
     }));
   };
 
@@ -180,15 +188,15 @@ function EditBlogContent() {
               <label className="block text-sm font-medium text-gray-300 mb-2">
                 Content *
               </label>
-              <textarea
-                name="content"
-                value={formData.content}
-                onChange={handleChange}
-                required
-                rows={15}
-                className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-purple-500 resize-none font-mono text-sm"
-                placeholder="Blog content (supports markdown)"
+              <RichTextEditor
+                content={formData.content}
+                onChange={handleContentChange}
+                placeholder="Start writing your blog content..."
               />
+              <p className="text-xs text-gray-500 mt-2">
+                Tip: Use the toolbar to format your content. You can add images
+                by URL using the image button.
+              </p>
             </div>
 
             {/* Tags and Read Time */}
