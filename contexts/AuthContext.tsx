@@ -5,6 +5,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface AuthContextType {
   user: User | null;
+  token: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
   login: (
@@ -19,21 +20,31 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
+  const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const checkAuth = async () => {
     setIsLoading(true);
     try {
-      const isValid = await AuthService.verifyToken();
-      if (isValid) {
-        const userData = AuthService.getUser();
-        setUser(userData);
+      const storedToken = AuthService.getToken();
+      if (storedToken) {
+        const isValid = await AuthService.verifyToken();
+        if (isValid) {
+          const userData = AuthService.getUser();
+          setUser(userData);
+          setToken(storedToken);
+        } else {
+          setUser(null);
+          setToken(null);
+        }
       } else {
         setUser(null);
+        setToken(null);
       }
     } catch (error) {
       console.error("Auth check error:", error);
       setUser(null);
+      setToken(null);
     } finally {
       setIsLoading(false);
     }
@@ -45,6 +56,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const response = await AuthService.login(email, password);
       if (response.success && response.data) {
         setUser(response.data.user);
+        setToken(response.data.token);
       }
       return { success: response.success, message: response.message };
     } catch (error) {
@@ -60,6 +72,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       await AuthService.logout();
       setUser(null);
+      setToken(null);
     } catch (error) {
       console.error("Logout error:", error);
     } finally {
@@ -73,6 +86,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const value = {
     user,
+    token,
     isAuthenticated: !!user,
     isLoading,
     login,

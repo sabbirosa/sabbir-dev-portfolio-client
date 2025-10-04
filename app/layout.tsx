@@ -1,5 +1,4 @@
-import Footer from "@/components/shared/Footer";
-import Header from "@/components/shared/Header";
+import ConditionalLayout from "@/components/shared/ConditionalLayout";
 import { AuthProvider } from "@/contexts/AuthContext";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -41,11 +40,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
       >
         <AuthProvider>
-          <div className="px-2 md:px-0">
-            <Header />
-          </div>
-          <main className="min-h-screen">{children}</main>
-          <Footer />
+          <ConditionalLayout>{children}</ConditionalLayout>
           <Toaster
             position="top-right"
             toastOptions={{

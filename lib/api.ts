@@ -1,7 +1,6 @@
 // API utility functions for backend communication
 
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001/api";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
 
 // Generic fetch wrapper with error handling
 async function fetchAPI<T>(
@@ -72,15 +71,15 @@ export const authAPI = {
 export const blogAPI = {
   getAll: async (published?: boolean) => {
     const query = published !== undefined ? `?published=${published}` : "";
-    return fetchAPI<any>(`/blogs${query}`);
+    return fetchAPI<any>(`/api/blogs${query}`);
   },
 
   getById: async (id: string) => {
-    return fetchAPI<any>(`/blogs/${id}`);
+    return fetchAPI<any>(`/api/blogs/${id}`);
   },
 
   create: async (token: string, blogData: any) => {
-    return fetchAPI<any>("/blogs", {
+    return fetchAPI<any>("/api/blogs", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -90,7 +89,7 @@ export const blogAPI = {
   },
 
   update: async (token: string, id: string, blogData: any) => {
-    return fetchAPI<any>(`/blogs/${id}`, {
+    return fetchAPI<any>(`/api/blogs/${id}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -100,7 +99,7 @@ export const blogAPI = {
   },
 
   delete: async (token: string, id: string) => {
-    return fetchAPI<any>(`/blogs/${id}`, {
+    return fetchAPI<any>(`/api/blogs/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -113,15 +112,15 @@ export const blogAPI = {
 export const projectAPI = {
   getAll: async (featured?: boolean) => {
     const query = featured !== undefined ? `?featured=${featured}` : "";
-    return fetchAPI<any>(`/projects${query}`);
+    return fetchAPI<any>(`/api/projects${query}`);
   },
 
   getById: async (id: string) => {
-    return fetchAPI<any>(`/projects/${id}`);
+    return fetchAPI<any>(`/api/projects/${id}`);
   },
 
   create: async (token: string, projectData: any) => {
-    return fetchAPI<any>("/projects", {
+    return fetchAPI<any>("/api/projects", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -131,7 +130,7 @@ export const projectAPI = {
   },
 
   update: async (token: string, id: string, projectData: any) => {
-    return fetchAPI<any>(`/projects/${id}`, {
+    return fetchAPI<any>(`/api/projects/${id}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -141,7 +140,7 @@ export const projectAPI = {
   },
 
   delete: async (token: string, id: string) => {
-    return fetchAPI<any>(`/projects/${id}`, {
+    return fetchAPI<any>(`/api/projects/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
