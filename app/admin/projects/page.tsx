@@ -77,13 +77,13 @@ function ProjectsContent() {
             <h1 className="text-3xl font-bold text-white mb-2">Projects</h1>
             <p className="text-gray-400">Manage your portfolio projects</p>
           </div>
-          <button
-            onClick={() => toast.info("Create project feature coming soon!")}
+          <Link
+            href="/admin/projects/create"
             className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
           >
             <Plus size={20} />
             Add Project
-          </button>
+          </Link>
         </div>
       </header>
 
@@ -121,12 +121,12 @@ function ProjectsContent() {
         ) : filteredProjects.length === 0 ? (
           <div className="bg-gray-800 rounded-lg border border-gray-700 p-12 text-center">
             <p className="text-gray-400 mb-4">No projects found</p>
-            <button
-              onClick={() => toast.info("Create project feature coming soon!")}
-              className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+            <Link
+              href="/admin/projects/create"
+              className="inline-block px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
             >
               Add Your First Project
-            </button>
+            </Link>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

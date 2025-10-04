@@ -86,13 +86,13 @@ function BlogsContent() {
             <h1 className="text-3xl font-bold text-white mb-2">Blog Posts</h1>
             <p className="text-gray-400">Manage your blog content</p>
           </div>
-          <button
-            onClick={() => toast.info("Create blog feature coming soon!")}
+          <Link
+            href="/admin/blogs/create"
             className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
           >
             <Plus size={20} />
             Create Blog
-          </button>
+          </Link>
         </div>
       </header>
 
@@ -140,12 +140,12 @@ function BlogsContent() {
         ) : filteredBlogs.length === 0 ? (
           <div className="bg-gray-800 rounded-lg border border-gray-700 p-12 text-center">
             <p className="text-gray-400 mb-4">No blogs found</p>
-            <button
-              onClick={() => toast.info("Create blog feature coming soon!")}
-              className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+            <Link
+              href="/admin/blogs/create"
+              className="inline-block px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
             >
               Create Your First Blog
-            </button>
+            </Link>
           </div>
         ) : (
           <div className="space-y-4">
