@@ -9,7 +9,7 @@ export default function AboutIntro() {
         {/* Text Section */}
         <div className="w-full space-y-4 text-left max-md:text-start">
           <h1 className="text-4xl text-balance sm:text-7xl font-semibold py-5">
-            I&apos;m an aspiring software engineer passionate about creating{" "}
+            I&apos;m a software engineer passionate about creating{" "}
             <span className="text-[#7C3AED]">interactive, impactful</span>{" "}
             digital experiences
           </h1>

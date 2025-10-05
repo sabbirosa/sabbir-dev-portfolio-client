@@ -1,5 +1,9 @@
 "use client";
 
+import { faStarOfLife } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ShinyText from "../home/ShinyText";
+
 interface Experience {
   position: string;
   company: string;
@@ -19,7 +23,10 @@ export default function ExperienceTimeline({
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between gap-8">
         {/* Left Section (Heading) */}
         <div className="md:w-1/2">
-          <h2 className="text-lg mb-2 text-[#7C3AED]">★ Experience</h2>
+          <h2 className="text-lg mb-2 shiny-sec text-[#7C3AED]">
+            <FontAwesomeIcon icon={faStarOfLife} className="text-lg mr-2" />
+            <ShinyText text="Experience" disabled={false} speed={2.5} />
+          </h2>
           <h3 className="text-4xl md:text-5xl mb-4 font-medium text-white">
             My Experience
           </h3>

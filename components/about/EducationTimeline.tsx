@@ -1,5 +1,9 @@
 "use client";
 
+import { faStarOfLife } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ShinyText from "../home/ShinyText";
+
 interface Education {
   degree: string;
   institution: string;
@@ -18,7 +22,10 @@ export default function EducationTimeline({
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between gap-8">
         {/* Left Section (Heading) */}
         <div className="md:w-1/2">
-          <h2 className="text-lg mb-2 text-[#7C3AED]">★ Education</h2>
+          <h2 className="text-lg mb-2 shiny-sec text-[#7C3AED]">
+            <FontAwesomeIcon icon={faStarOfLife} className="text-lg mr-2" />
+            <ShinyText text="Education" disabled={false} speed={2.5} />
+          </h2>
           <h3 className="text-4xl md:text-5xl mb-4 font-medium text-white">
             My Education
           </h3>

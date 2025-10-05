@@ -17,10 +17,10 @@ export default function ServiceHighlights() {
           <div className="flex justify-end">
             <div className="max-w-lg">
               <p className="text-gray-400 mb-5 text-balance">
-                As an aspiring software engineer, I blend technical precision
-                with user-focused design—delivering solutions that are
-                functional, scalable, and visually engaging. My approach pairs
-                solid engineering principles with seamless user experience.
+                As a software engineer, I blend technical precision with
+                user-focused design—delivering solutions that are functional,
+                scalable, and visually engaging. My approach pairs solid
+                engineering principles with seamless user experience.
               </p>
 
               {/* Right Side Button */}

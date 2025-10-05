@@ -26,7 +26,7 @@ export default function FeaturedWork({ projects }: FeaturedWorkProps) {
         <h2 className="text-5xl font-semibold mb-5">FEATURED WORK</h2>
         <div className="flex flex-wrap justify-between">
           <p className="text-gray-400 max-w-xl mb-10">
-            As an aspiring software engineer, I build scalable, accessible, and
+            As a software engineer, I build scalable, accessible, and
             user-focused digital solutions—from full-stack platforms to
             open-source libraries.
           </p>

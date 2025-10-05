@@ -16,7 +16,7 @@ export default function HomeHero() {
             Hi, I&apos;m Sabbir Bin Abdul Latif
           </p>
           <h1 className="text-5xl sm:text-6xl font-semibold leading-tight">
-            Aspiring <br />{" "}
+            Full Stack <br />{" "}
             <span className="text-[#7C3AED]">Software Engineer</span>
           </h1>
 
