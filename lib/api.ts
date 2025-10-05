@@ -229,3 +229,177 @@ export const projectAPI = {
     );
   },
 };
+
+// Education API functions
+export const educationAPI = {
+  getAll: async () => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown>[] }>(
+      "/api/education"
+    );
+  },
+
+  getById: async (id: string) => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(
+      `/api/education/${id}`
+    );
+  },
+
+  create: async (token: string, educationData: Record<string, unknown>) => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(
+      "/api/education",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(educationData),
+      }
+    );
+  },
+
+  update: async (
+    token: string,
+    id: string,
+    educationData: Record<string, unknown>
+  ) => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(
+      `/api/education/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(educationData),
+      }
+    );
+  },
+
+  delete: async (token: string, id: string) => {
+    return fetchAPI<{ success: boolean; message: string }>(
+      `/api/education/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  },
+};
+
+// Experience API functions
+export const experienceAPI = {
+  getAll: async () => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown>[] }>(
+      "/api/experience"
+    );
+  },
+
+  getById: async (id: string) => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(
+      `/api/experience/${id}`
+    );
+  },
+
+  create: async (token: string, experienceData: Record<string, unknown>) => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(
+      "/api/experience",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(experienceData),
+      }
+    );
+  },
+
+  update: async (
+    token: string,
+    id: string,
+    experienceData: Record<string, unknown>
+  ) => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(
+      `/api/experience/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(experienceData),
+      }
+    );
+  },
+
+  delete: async (token: string, id: string) => {
+    return fetchAPI<{ success: boolean; message: string }>(
+      `/api/experience/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  },
+};
+
+// Extracurricular API functions
+export const extracurricularAPI = {
+  getAll: async () => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown>[] }>(
+      "/api/extracurricular"
+    );
+  },
+
+  getById: async (id: string) => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(
+      `/api/extracurricular/${id}`
+    );
+  },
+
+  create: async (
+    token: string,
+    extracurricularData: Record<string, unknown>
+  ) => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(
+      "/api/extracurricular",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(extracurricularData),
+      }
+    );
+  },
+
+  update: async (
+    token: string,
+    id: string,
+    extracurricularData: Record<string, unknown>
+  ) => {
+    return fetchAPI<{ success: boolean; data: Record<string, unknown> }>(
+      `/api/extracurricular/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(extracurricularData),
+      }
+    );
+  },
+
+  delete: async (token: string, id: string) => {
+    return fetchAPI<{ success: boolean; message: string }>(
+      `/api/extracurricular/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  },
+};

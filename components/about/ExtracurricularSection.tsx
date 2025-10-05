@@ -1,8 +1,18 @@
 "use client";
 
-import { extracurricular } from "@/data/extracurricular";
+interface Extracurricular {
+  role: string;
+  organization: string;
+  year: string;
+}
 
-export default function ExtracurricularSection() {
+interface ExtracurricularSectionProps {
+  extracurricular: Extracurricular[];
+}
+
+export default function ExtracurricularSection({
+  extracurricular,
+}: ExtracurricularSectionProps) {
   return (
     <section className="w-full my-16 px-4 py-16">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between gap-8">

@@ -1,8 +1,18 @@
 "use client";
 
-import { education } from "@/data/education";
+interface Education {
+  degree: string;
+  institution: string;
+  year: string;
+}
 
-export default function EducationTimeline() {
+interface EducationTimelineProps {
+  education: Education[];
+}
+
+export default function EducationTimeline({
+  education,
+}: EducationTimelineProps) {
   return (
     <section className="w-full my-16 px-4 py-16">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between gap-8">

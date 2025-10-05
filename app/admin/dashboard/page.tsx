@@ -2,8 +2,22 @@
 
 import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import { useAuth } from "@/contexts/AuthContext";
-import { blogAPI, projectAPI } from "@/lib/api";
-import { FileText, FolderOpen, Settings, TrendingUp } from "lucide-react";
+import {
+  blogAPI,
+  educationAPI,
+  experienceAPI,
+  extracurricularAPI,
+  projectAPI,
+} from "@/lib/api";
+import {
+  Award,
+  BookOpen,
+  Briefcase,
+  FileText,
+  FolderOpen,
+  Settings,
+  TrendingUp,
+} from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -22,15 +36,27 @@ function DashboardContent() {
     publishedBlogs: 0,
     totalProjects: 0,
     featuredProjects: 0,
+    totalEducation: 0,
+    totalExperience: 0,
+    totalExtracurricular: 0,
   });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const [blogsRes, projectsRes] = await Promise.all([
+        const [
+          blogsRes,
+          projectsRes,
+          educationRes,
+          experienceRes,
+          extracurricularRes,
+        ] = await Promise.all([
           blogAPI.getAll(),
           projectAPI.getAll(),
+          educationAPI.getAll(),
+          experienceAPI.getAll(),
+          extracurricularAPI.getAll(),
         ]);
 
         setStats({
@@ -47,6 +73,15 @@ function DashboardContent() {
             ? projectsRes.data.filter(
                 (p: Record<string, unknown>) => p.featured === true
               ).length
+            : 0,
+          totalEducation: Array.isArray(educationRes.data)
+            ? educationRes.data.length
+            : 0,
+          totalExperience: Array.isArray(experienceRes.data)
+            ? experienceRes.data.length
+            : 0,
+          totalExtracurricular: Array.isArray(extracurricularRes.data)
+            ? extracurricularRes.data.length
             : 0,
         });
       } catch (error) {
@@ -108,25 +143,51 @@ function DashboardContent() {
         </div>
 
         {/* Quick Actions Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <QuickActionCard
-            icon={FileText}
-            title="Manage Blogs"
-            description="Create, edit, and manage your blog posts"
-            href="/admin/blogs"
-          />
-          <QuickActionCard
-            icon={FolderOpen}
-            title="Manage Projects"
-            description="Showcase your projects and work"
-            href="/admin/projects"
-          />
-          <QuickActionCard
-            icon={Settings}
-            title="Site Settings"
-            description="Configure your portfolio settings"
-            href="/admin/settings"
-          />
+        <div>
+          <h2 className="text-2xl font-bold text-white mb-6">Quick Actions</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <QuickActionCard
+              icon={FileText}
+              title="Manage Blogs"
+              description="Create, edit, and manage your blog posts"
+              href="/admin/blogs"
+              count={stats.totalBlogs}
+            />
+            <QuickActionCard
+              icon={FolderOpen}
+              title="Manage Projects"
+              description="Showcase your projects and work"
+              href="/admin/projects"
+              count={stats.totalProjects}
+            />
+            <QuickActionCard
+              icon={BookOpen}
+              title="Manage Education"
+              description="Update your educational background"
+              href="/admin/education"
+              count={stats.totalEducation}
+            />
+            <QuickActionCard
+              icon={Briefcase}
+              title="Manage Experience"
+              description="Add and edit work experience"
+              href="/admin/experience"
+              count={stats.totalExperience}
+            />
+            <QuickActionCard
+              icon={Award}
+              title="Manage Extracurricular"
+              description="Showcase your activities and leadership"
+              href="/admin/extracurricular"
+              count={stats.totalExtracurricular}
+            />
+            <QuickActionCard
+              icon={Settings}
+              title="Site Settings"
+              description="Configure your portfolio settings"
+              href="/admin/settings"
+            />
+          </div>
         </div>
       </main>
     </div>
@@ -138,6 +199,7 @@ interface QuickActionCardProps {
   title: string;
   description: string;
   href: string;
+  count?: number;
 }
 
 function QuickActionCard({
@@ -145,18 +207,24 @@ function QuickActionCard({
   title,
   description,
   href,
+  count,
 }: QuickActionCardProps) {
   return (
     <Link href={href}>
       <div className="bg-gray-800 rounded-lg border border-gray-700 p-6 hover:border-purple-500 hover:bg-gray-750 transition-all cursor-pointer group">
-        <div className="flex items-start gap-4">
-          <div className="flex-shrink-0">
-            <Icon className="h-8 w-8 text-purple-500 group-hover:text-purple-400" />
+        <div className="flex items-start justify-between">
+          <div className="flex items-start gap-4 flex-1">
+            <div className="flex-shrink-0">
+              <Icon className="h-8 w-8 text-purple-500 group-hover:text-purple-400" />
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
+              <p className="text-gray-400 text-sm">{description}</p>
+            </div>
           </div>
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
-            <p className="text-gray-400 text-sm">{description}</p>
-          </div>
+          {count !== undefined && (
+            <div className="text-2xl font-bold text-purple-500">{count}</div>
+          )}
         </div>
       </div>
     </Link>

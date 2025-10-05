@@ -26,7 +26,7 @@ export default function ServiceHighlights() {
               {/* Right Side Button */}
               <Link href="/contact">
                 <button className="contact-btn border p-3 text-sm border-gray-700 rounded-3xl cursor-pointer hover:bg-white hover:text-black transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 mb-10 flex items-center gap-2">
-                  Let's Discuss
+                  Let&apos;s Discuss
                   <ArrowRight className="w-4 h-4 -rotate-45" />
                 </button>
               </Link>

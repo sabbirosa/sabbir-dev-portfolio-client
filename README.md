@@ -137,7 +137,7 @@ NEXT_PUBLIC_API_URL=http://localhost:3001/api
 - ISR implementation
 - SSG implementation
 
-### 📋 TODO
+### TODO
 
 - Rich text editor integration
 - Image upload functionality

@@ -22,7 +22,7 @@ const initializeAdmin = async () => {
       updatedAt: new Date(),
     };
     setAdminUser(adminUser);
-    console.log("🔐 Admin user initialized with email:", adminEmail);
+    console.log("Admin user initialized with email:", adminEmail);
   }
 };
 

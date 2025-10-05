@@ -46,8 +46,7 @@ export default function AboutIntroHome() {
           clipPath: "inset(0% 100% 0% 0%)",
         }}
       >
-        I'm{" "}
-        <span className="text-white">Sabbir Bin Abdul Latif</span>, an
+        I&apos;m <span className="text-white">Sabbir Bin Abdul Latif</span>, an
         <span className="text-purple-600"> aspiring software engineer</span> who
         loves connecting patterns between real‑world problems and scalable
         digital systems. I build accessible, performance‑minded apps with

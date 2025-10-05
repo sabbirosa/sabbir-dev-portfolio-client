@@ -1,8 +1,19 @@
 "use client";
 
-import { experience } from "@/data/experience";
+interface Experience {
+  position: string;
+  company: string;
+  year: string;
+  description?: string;
+}
 
-export default function ExperienceTimeline() {
+interface ExperienceTimelineProps {
+  experience: Experience[];
+}
+
+export default function ExperienceTimeline({
+  experience,
+}: ExperienceTimelineProps) {
   return (
     <section className="w-full my-16 px-4 py-16">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between gap-8">

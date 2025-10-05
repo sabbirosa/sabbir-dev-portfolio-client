@@ -2,6 +2,9 @@
 
 import { useAuth } from "@/contexts/AuthContext";
 import {
+  Award,
+  BookOpen,
+  Briefcase,
   FileText,
   FolderOpen,
   Home,
@@ -42,6 +45,9 @@ export default function AdminLayout({
     { name: "Dashboard", href: "/admin/dashboard", icon: Home },
     { name: "Blogs", href: "/admin/blogs", icon: FileText },
     { name: "Projects", href: "/admin/projects", icon: FolderOpen },
+    { name: "Education", href: "/admin/education", icon: BookOpen },
+    { name: "Experience", href: "/admin/experience", icon: Briefcase },
+    { name: "Extracurricular", href: "/admin/extracurricular", icon: Award },
     { name: "Settings", href: "/admin/settings", icon: Settings },
   ];
 

@@ -3,6 +3,7 @@
 import { useAuth } from "@/contexts/AuthContext";
 import { uploadAPI } from "@/lib/api";
 import { Image as ImageIcon, Upload, X } from "lucide-react";
+import Image from "next/image";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -124,10 +125,13 @@ export function ImageUpload({
           {preview ? (
             // Image Preview
             <div className="relative group">
-              <img
+              <Image
                 src={preview}
                 alt="Preview"
+                width={800}
+                height={192}
                 className="w-full h-48 object-cover rounded-lg"
+                unoptimized={preview.startsWith("data:")}
               />
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center gap-2">
                 <button
