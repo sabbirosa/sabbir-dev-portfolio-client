@@ -105,8 +105,6 @@ function CreateBlogContent() {
         blogData.featuredImage = formData.featuredImage.trim();
       }
 
-      console.log("Sending blog data:", blogData); // Debug log
-
       await blogAPI.create(token, blogData);
       toast.success("Blog created successfully");
       router.push("/admin/blogs");

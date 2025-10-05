@@ -3,7 +3,7 @@
 import { useAuth } from "@/contexts/AuthContext";
 import { uploadAPI } from "@/lib/api";
 import { Image as ImageIcon, Upload, X } from "lucide-react";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 
 interface ImageUploadProps {
@@ -25,6 +25,11 @@ export function ImageUpload({
   const [uploading, setUploading] = useState(false);
   const [preview, setPreview] = useState<string | undefined>(value);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Sync preview with value prop
+  useEffect(() => {
+    setPreview(value);
+  }, [value]);
 
   const handleFileSelect = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -50,7 +55,7 @@ export function ImageUpload({
     try {
       setUploading(true);
 
-      // Create preview
+      // Create temporary preview
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreview(reader.result as string);
@@ -61,7 +66,14 @@ export function ImageUpload({
       const response = await uploadAPI.uploadImage(token, file, folder);
 
       if (response.success && response.data?.url) {
-        onChange(response.data.url);
+        const cloudinaryUrl = response.data.url;
+
+        // Update preview with actual Cloudinary URL
+        setPreview(cloudinaryUrl);
+
+        // Send URL to parent form
+        onChange(cloudinaryUrl);
+
         toast.success("Image uploaded successfully");
       } else {
         throw new Error("Upload failed");

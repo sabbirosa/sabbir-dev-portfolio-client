@@ -94,6 +94,12 @@ function CreateProjectContent() {
           .filter((tech) => tech),
       };
 
+      // Verify image URL is present (required field)
+      if (!projectData.image?.trim()) {
+        toast.error("Project image is required. Please upload an image first.");
+        return;
+      }
+
       await projectAPI.create(token, projectData);
       toast.success("Project created successfully");
       router.push("/admin/projects");

@@ -15,12 +15,12 @@ async function fetchAPI<T>(
 
   try {
     const response = await fetch(url, {
+      ...options,
       headers: {
         "Content-Type": "application/json",
         ...options.headers,
       },
       signal: controller.signal,
-      ...options,
     });
 
     clearTimeout(timeoutId);

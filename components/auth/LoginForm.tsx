@@ -92,7 +92,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
             type="email"
             value={formData.email}
             onChange={handleInputChange}
-            placeholder="admin@sabbir.dev"
+            placeholder="admin@sabbir.co"
             className={errors.email ? "border-red-500" : ""}
             disabled={isLoading}
           />
@@ -143,12 +143,6 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
           )}
         </Button>
       </form>
-
-      <div className="text-center text-sm text-muted-foreground">
-        <p>Demo credentials:</p>
-        <p>Email: admin@sabbir.dev</p>
-        <p>Password: Admin123!</p>
-      </div>
     </div>
   );
 }
