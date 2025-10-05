@@ -1,6 +1,7 @@
 "use client";
 
 import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
+import { ImageUpload } from "@/components/shared/ImageUpload";
 import { useAuth } from "@/contexts/AuthContext";
 import { projectAPI } from "@/lib/api";
 import { ArrowLeft, Save } from "lucide-react";
@@ -183,34 +184,16 @@ function EditProjectContent() {
               />
             </div>
 
-            {/* Image URL */}
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Image URL *
-              </label>
-              <input
-                type="url"
-                name="image"
-                value={formData.image}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-purple-500"
-                placeholder="https://example.com/image.png"
-              />
-              {formData.image && (
-                <div className="mt-3 relative h-40 bg-gray-700 rounded-lg overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={formData.image}
-                    alt="Preview"
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = "none";
-                    }}
-                  />
-                </div>
-              )}
-            </div>
+            {/* Project Image */}
+            <ImageUpload
+              value={formData.image}
+              onChange={(url) =>
+                setFormData((prev) => ({ ...prev, image: url }))
+              }
+              folder="projects"
+              label="Project Image *"
+              helpText="Upload a project preview image (PNG, JPG up to 5MB)"
+            />
 
             {/* Links and Year */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

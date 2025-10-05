@@ -2,6 +2,7 @@
 
 import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import { RichTextEditor } from "@/components/blog/RichTextEditor";
+import { ImageUpload } from "@/components/shared/ImageUpload";
 import { useAuth } from "@/contexts/AuthContext";
 import { blogAPI } from "@/lib/api";
 import { ArrowLeft, Save } from "lucide-react";
@@ -13,6 +14,7 @@ interface BlogFormData {
   title: string;
   description: string;
   content: string;
+  featuredImage: string;
   tags: string;
   readTime: string;
   published: boolean;
@@ -34,6 +36,7 @@ function CreateBlogContent() {
     title: "",
     description: "",
     content: "",
+    featuredImage: "",
     tags: "",
     readTime: "",
     published: false,
@@ -84,14 +87,25 @@ function CreateBlogContent() {
     try {
       setSaving(true);
 
-      const blogData = {
-        ...formData,
+      const blogData: Record<string, unknown> = {
+        title: formData.title.trim(),
+        description: formData.description.trim(),
+        content: formData.content.trim(),
         tags: formData.tags
           .split(",")
           .map((tag) => tag.trim())
           .filter((tag) => tag),
+        readTime: formData.readTime || "5 min read",
+        published: formData.published,
         date: new Date().toISOString(),
       };
+
+      // Only add featuredImage if it exists
+      if (formData.featuredImage?.trim()) {
+        blogData.featuredImage = formData.featuredImage.trim();
+      }
+
+      console.log("Sending blog data:", blogData); // Debug log
 
       await blogAPI.create(token, blogData);
       toast.success("Blog created successfully");
@@ -161,6 +175,17 @@ function CreateBlogContent() {
               />
             </div>
 
+            {/* Featured Image */}
+            <ImageUpload
+              value={formData.featuredImage}
+              onChange={(url) =>
+                setFormData((prev) => ({ ...prev, featuredImage: url }))
+              }
+              folder="blogs"
+              label="Featured Image"
+              helpText="Upload a featured image for your blog (PNG, JPG up to 5MB)"
+            />
+
             {/* Content */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
@@ -172,8 +197,9 @@ function CreateBlogContent() {
                 placeholder="Start writing your blog content..."
               />
               <p className="text-xs text-gray-500 mt-2">
-                Tip: Use the toolbar to format your content. You can add images
-                by URL using the image button.
+                Tip: Use the toolbar to format your content. Click the Upload
+                icon to add images from your computer, or the Image icon to add
+                images by URL.
               </p>
             </div>
 

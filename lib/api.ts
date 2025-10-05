@@ -131,6 +131,47 @@ export const blogAPI = {
   },
 };
 
+// Upload API functions
+export const uploadAPI = {
+  uploadImage: async (
+    token: string,
+    file: File,
+    folder: string = "general"
+  ) => {
+    const formData = new FormData();
+    formData.append("image", file);
+    formData.append("folder", folder);
+
+    const url = `${API_BASE_URL}/api/upload`;
+
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to upload image");
+    }
+
+    return data;
+  },
+
+  deleteImage: async (token: string, publicId: string) => {
+    return fetchAPI<{ success: boolean; message: string }>("/api/upload", {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ publicId }),
+    });
+  },
+};
+
 // Project API functions
 export const projectAPI = {
   getAll: async (featured?: boolean) => {

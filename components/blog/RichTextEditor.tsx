@@ -1,5 +1,7 @@
 "use client";
 
+import { useAuth } from "@/contexts/AuthContext";
+import { uploadAPI } from "@/lib/api";
 import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
 import Placeholder from "@tiptap/extension-placeholder";
@@ -19,8 +21,10 @@ import {
   Quote,
   Redo,
   Undo,
+  Upload,
 } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
 
 interface RichTextEditorProps {
   content: string;
@@ -29,11 +33,56 @@ interface RichTextEditorProps {
 }
 
 const MenuBar = ({ editor }: { editor: Editor | null }) => {
+  const { token } = useAuth();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploading, setUploading] = useState(false);
+
   if (!editor) {
     return null;
   }
 
-  const addImage = () => {
+  const handleImageUpload = async (file: File) => {
+    if (!token) {
+      toast.error("Authentication required");
+      return;
+    }
+
+    if (!file.type.startsWith("image/")) {
+      toast.error("Please select an image file");
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("Image size should be less than 5MB");
+      return;
+    }
+
+    try {
+      setUploading(true);
+      const response = await uploadAPI.uploadImage(token, file, "blogs");
+
+      if (response.success && response.data?.url) {
+        editor.chain().focus().setImage({ src: response.data.url }).run();
+        toast.success("Image uploaded successfully");
+      }
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to upload image";
+      toast.error(errorMessage);
+      console.error(error);
+    } finally {
+      setUploading(false);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    }
+  };
+
+  const addImageFromFile = () => {
+    fileInputRef.current?.click();
+  };
+
+  const addImageFromURL = () => {
     const url = window.prompt("Enter image URL:");
     if (url) {
       editor.chain().focus().setImage({ src: url }).run();
@@ -143,14 +192,41 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
       >
         <LinkIcon size={18} />
       </button>
+
+      <div className="w-px h-6 bg-gray-600 mx-1" />
+
       <button
-        onClick={addImage}
+        onClick={addImageFromFile}
         className={buttonClass()}
         type="button"
-        title="Add Image"
+        title="Upload Image"
+        disabled={uploading}
+      >
+        {uploading ? (
+          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-300" />
+        ) : (
+          <Upload size={18} />
+        )}
+      </button>
+      <button
+        onClick={addImageFromURL}
+        className={buttonClass()}
+        type="button"
+        title="Add Image from URL"
       >
         <ImageIcon size={18} />
       </button>
+
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*"
+        onChange={(e) => {
+          const file = e.target.files?.[0];
+          if (file) handleImageUpload(file);
+        }}
+        className="hidden"
+      />
 
       <div className="w-px h-6 bg-gray-600 mx-1" />
 
